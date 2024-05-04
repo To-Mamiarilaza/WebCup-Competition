@@ -9,11 +9,11 @@
             <h4>Détails de la vente</h4>
         </div>
         <div class="col-6 valider-button">
-            <a href="{{ route('vente.valider', $produit->id) }}" class="btn btn-primary valider-button">Valider</a>
-            <a href="{{ route('vente.refuser', $produit->id) }}" class="btn btn-warning valider-button">Refuser</a>
+            <a href="{{ route('vente.valider', $produit->id) }}" class="btn btn-primary valider-button"><i class="fas fa-check"></i> Valider</a>
+            <a href="{{ route('vente.refuser', $produit->id) }}" class="btn btn-warning valider-button"><i class="fas fa-trash"></i> Refuser</a>
         </div>
     </div>
-    <table class="table">
+    <table class="table ventes-list">
         <tbody>
             <tr>
                 <th scope="row">Id:</th>

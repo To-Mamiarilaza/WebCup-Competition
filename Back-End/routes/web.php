@@ -37,6 +37,8 @@ Route::get('/vente-valider/{id}', [ProduitController::class, 'venteValider'])->n
 Route::get('/vente-refuser/{id}', [ProduitController::class, 'venteRefuser'])->name('vente.refuser');
 
 
+Route::get('/logout', [UtilisateurController::class, 'logout'])->name('logout');
+
 
 
 

@@ -6,26 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <style>
-        .centered-form {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .centered-form .button-wrapper {
-            text-align: right;
-            margin-top: 5px;
-        }
-
-        /* Style for list items */
-        .alert ul {
-            list-style-type: none; /* Remove bullets */
-            padding: 0; /* Remove default padding */
-            margin: 0; /* Remove default margin */
-        }
-    </style>
+    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
 </head>
 
 <body>

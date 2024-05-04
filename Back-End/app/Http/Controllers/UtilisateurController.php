@@ -10,7 +10,6 @@ class UtilisateurController extends Controller
 
     public function showLoginForm(Request $request)
     {
-        $request->session()->forget('user_id');
         return view('utilisateur.login');
     }
 
@@ -23,5 +22,11 @@ class UtilisateurController extends Controller
             return redirect()->intended('/categories');
         }
         return back()->withErrors(['message' => 'Nom d\'utilisateur ou mot de passe incorrect'])->withInput();
+    }
+
+    public function logout(Request $request)
+    {
+        $request->session()->flush();
+        return redirect('/login');
     }
 }

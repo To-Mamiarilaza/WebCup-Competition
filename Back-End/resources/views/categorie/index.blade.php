@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-6">
                     <div class="button-wrapper">
-                        <button type="submit" class="btn btn-primary">Valider</button>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Creer</button>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
             <tr>
                 <td>{{ $category->nom }}</td>
                 <td>
-                    <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary btn-sm ml-2">Modifier</a>
+                    <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary btn-sm ml-2"><i class="fas fa-edit"></i></a>
                 </td>
             </tr>
             @endforeach

@@ -26,7 +26,7 @@
                 <td>{{ $produit->ville }}</td>
                 <td>{{ $produit->pays }}</td>
                 <td>
-                    <a href="{{ route('produit.details', $produit->id) }}" class="btn btn-primary btn-sm">Voir détails</a>
+                    <a href="{{ route('produit.details', $produit->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-info"></i></a>
                 </td>
             </tr>
             @endforeach

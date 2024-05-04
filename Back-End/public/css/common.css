@@ -4,26 +4,58 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #f8f9fa;
+    background-color: #343a40;
     padding-top: 20px;
 }
+
+.sidebar h4 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar .nav-link {
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #495057;
+}
+
+.sidebar .nav-link.active {
+    background-color: #007bff;
+}
+
+/* =================================================================== */
 
 .main-content {
     margin-left: 200px;
     padding: 20px;
 }
 
-/* Custom style for the form */
 .create-form {
-    background-color: #ffffff;
+    background-color: #fff;
     padding: 20px;
     margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Custom style for the list */
-.category-list {
-    background-color: #ffffff;
-    padding: 20px;
+.create-form h4 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.create-form .form-group {
+    margin-bottom: 5px;
+}
+
+.create-form label {
+    font-weight: bold;
 }
 
 .button-wrapper {
@@ -31,18 +63,89 @@
     margin-top: 5px;
 }
 
-.product-details {
-    background-color: #ffffff;
+.category-list {
+    background-color: #fff;
     padding: 20px;
-    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.product-image {
-    max-width: 100%;
-    height: auto;
-    margin-top: 10px;
+.category-list h4 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.category-list table {
+    width: 100%;
+}
+
+.category-list th,
+.category-list td {
+    padding: 10px;
+}
+
+.category-list th {
+    font-weight: bold;
+}
+
+.category-list tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.category-list tbody tr:hover {
+    background-color: #e2e6ea;
+}
+
+.category-list .btn {
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.category-list .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.category-list .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* ========================================================== */
+
+/* Custom styles for the product details page */
+
+.product-details {
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .valider-button {
     text-align: right;
+}
+
+.valider-button .btn {
+    margin-left: 5px;
+}
+
+.product-details table th {
+    width: 20%;
+}
+
+.product-details table td {
+    width: 80%;
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.ventes-list th{
+    max-width: 20px;
 }

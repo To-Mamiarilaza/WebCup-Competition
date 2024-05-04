@@ -27,7 +27,7 @@ Route::get('/categories', [CategorieApiController::class, 'index']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::middleware(['CheckUserToken'])->group(function () {
+Route::middleware(['checkUserToken'])->group(function () {
     Route::post('/test', [AuthController::class, 'test']);
     // Vos routes protégées par le token
 });

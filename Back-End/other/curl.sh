@@ -19,7 +19,7 @@ curl http://127.0.0.1:8000/api/login \
 
 curl http://127.0.0.1:8000/api/test \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer sNex2eGsjbo39LK5ohYiwqMA8PnxAD9lzmQxt4OuxOzHVilnzGDwkbSkqNiA" \
+  -H "Authorization: Bearer CPTATxtVQIzfrkvmAV0XID9pjmtm0ldFEC8qxbk1DQnDHgAQJF2vZLCbNzTu" \
   -d '{
     "mail": "logan@gmail.com",
     "password": "logan"

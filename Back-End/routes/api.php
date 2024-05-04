@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\EquivalenceDeviseApiController;
 use App\Http\Controllers\Api\ModePaiementApiController;
 use App\Http\Controllers\Api\PaysApiController;
 use App\Http\Controllers\Api\TransactionApiController;
+use App\Http\Controllers\Api\VenteApiController;
 use App\Http\Controllers\Api\VilleApiController;
 use App\Http\Controllers\Api\VProduitLibCompletApiController;
 use App\Http\Controllers\Api\VVilleLibCompletApiController;
@@ -63,7 +64,9 @@ Route::middleware(['checkUserToken'])->group(function () {
     Route::get('/equivalence_devises', [EquivalenceDeviseApiController::class, 'index']);
     Route::post('/transaction_jetons', [TransactionJetonApiController::class, 'store']); // valeur_devise, montant
     Route::post('/achat_produits', [AchatApiController::class, 'achat']);
-    Route::post('/transactions', [TransactionApiController::class, 'userTransation']);
+    Route::get('/transactions', [TransactionApiController::class, 'userTransation']);
+    Route::get('/historique_ventes', [VenteApiController::class, 'historiqueVente']);
+    Route::get('/annulation_vente', [VenteApiController::class, 'annulerVente']);
 
     // Vos routes protégées par le token
 });

@@ -55,4 +55,19 @@ curl http://127.0.0.1:8000/api/achat_produits \
 curl http://127.0.0.1:8000/api/transactions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer 2FmaZ6hC8zmDnmnzGvqkHccIE9peTHD0rHNiEpWpdIohpzKcTiAmC80CN4MI" \
-  -X POST
+  -X GET
+
+# --------------------------------------------- VENTE
+curl http://127.0.0.1:8000/api/historique_ventes \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer 2FmaZ6hC8zmDnmnzGvqkHccIE9peTHD0rHNiEpWpdIohpzKcTiAmC80CN4MI" \
+  -X GET
+
+curl http://127.0.0.1:8000/api/annulation_vente \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer 2FmaZ6hC8zmDnmnzGvqkHccIE9peTHD0rHNiEpWpdIohpzKcTiAmC80CN4MI" \
+  -X GET \
+  -d '{
+    "id_produit": 6
+}'
+

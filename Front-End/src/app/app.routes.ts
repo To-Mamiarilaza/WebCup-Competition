@@ -6,6 +6,8 @@ import { SignInComponent } from "./pages/auth/sign-in/sign-in.component";
 import { SignUpComponent } from "./pages/auth/sign-up/sign-up.component";
 import { PageNotFoundComponent } from "./pages/error/page-not-found/page-not-found.component";
 import { ProductSheetComponent } from "./pages/product/product-sheet/product-sheet.component";
+import { TransactionComponent } from "./pages/transaction/transaction.component";
+import { TokenPurchaseComponent } from "./pages/token-purchase/token-purchase.component";
 
 export const routes: Routes = [
   {
@@ -17,6 +19,16 @@ export const routes: Routes = [
         path: "product/:productId",
         component: ProductSheetComponent,
         title: "Fiche produit",
+      },
+      {
+        path: "transaction",
+        component: TransactionComponent,
+        title: "Transactions",
+      },
+      {
+        path: "token-purchase",
+        component: TokenPurchaseComponent,
+        title: "Achat jetons",
       },
     ],
   },

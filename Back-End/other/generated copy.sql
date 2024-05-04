@@ -1,3 +1,8 @@
+
+CREATE  TABLE techmavericks_webcup.avatar ( 
+	id                   INT  NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
+	url                  TEXT       
+ );
 CREATE  TABLE techmavericks_webcup.categorie ( 
 	id                   INT  NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
 	nom                  VARCHAR(255)  NOT NULL     ,
@@ -117,8 +122,7 @@ CREATE  TABLE techmavericks_webcup.ville (
 	nom                  VARCHAR(255)       ,
 	id_pays              INT       ,
 	created_at           TIMESTAMP       ,
-	updated_at           TIMESTAMP       ,
-	CONSTRAINT ville_ibfk_1 FOREIGN KEY ( id_pays ) REFERENCES techmavericks_webcup.pays( id ) ON DELETE CASCADE ON UPDATE CASCADE
+	updated_at           TIMESTAMP       
  );
 CREATE INDEX id_pays ON techmavericks_webcup.ville ( id_pays );
 
@@ -133,12 +137,7 @@ CREATE  TABLE techmavericks_webcup.produit (
 	id_categorie         INT       ,
 	id_utilisateur       INT       ,
 	created_at           TIMESTAMP       ,
-	updated_at           TIMESTAMP       ,
-	CONSTRAINT produit_ibfk_1 FOREIGN KEY ( id_etat ) REFERENCES techmavericks_webcup.etat_produit( id ) ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT produit_ibfk_2 FOREIGN KEY ( id_condition ) REFERENCES techmavericks_webcup.condition_produit( id ) ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT produit_ibfk_3 FOREIGN KEY ( id_localisation ) REFERENCES techmavericks_webcup.ville( id ) ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT produit_ibfk_4 FOREIGN KEY ( id_categorie ) REFERENCES techmavericks_webcup.categorie( id ) ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT produit_ibfk_5 FOREIGN KEY ( id_utilisateur ) REFERENCES techmavericks_webcup.utilisateur_front_office( id ) ON DELETE CASCADE ON UPDATE CASCADE
+	updated_at           TIMESTAMP       
  );
 CREATE INDEX id_etat ON techmavericks_webcup.produit ( id_etat );
 
@@ -155,8 +154,7 @@ CREATE  TABLE techmavericks_webcup.tokens (
 	id_user              INT  NOT NULL     ,
 	token                VARCHAR(255)  NOT NULL     ,
 	created_at           TIMESTAMP       ,
-	updated_at           TIMESTAMP       ,
-	CONSTRAINT tokens_ibfk_1 FOREIGN KEY ( id_user ) REFERENCES techmavericks_webcup.utilisateur_front_office( id ) ON DELETE NO ACTION ON UPDATE NO ACTION
+	updated_at           TIMESTAMP       
  );
 CREATE INDEX id_user ON techmavericks_webcup.tokens ( id_user );
 
@@ -169,12 +167,7 @@ CREATE  TABLE techmavericks_webcup.transaction (
 	id_utilisateur_tiers INT       ,
 	id_etat              INT       ,
 	created_at           TIMESTAMP       ,
-	updated_at           TIMESTAMP       ,
-	CONSTRAINT transaction_ibfk_1 FOREIGN KEY ( id_type ) REFERENCES techmavericks_webcup.type_transaction( id ) ON DELETE NO ACTION ON UPDATE NO ACTION,
-	CONSTRAINT transaction_ibfk_2 FOREIGN KEY ( id_utilisateur ) REFERENCES techmavericks_webcup.utilisateur_front_office( id ) ON DELETE NO ACTION ON UPDATE NO ACTION,
-	CONSTRAINT transaction_ibfk_3 FOREIGN KEY ( id_produit ) REFERENCES techmavericks_webcup.produit( id ) ON DELETE NO ACTION ON UPDATE NO ACTION,
-	CONSTRAINT transaction_ibfk_4 FOREIGN KEY ( id_utilisateur_tiers ) REFERENCES techmavericks_webcup.utilisateur_front_office( id ) ON DELETE NO ACTION ON UPDATE NO ACTION,
-	CONSTRAINT transaction_ibfk_5 FOREIGN KEY ( id_etat ) REFERENCES techmavericks_webcup.etat_transaction( id ) ON DELETE NO ACTION ON UPDATE NO ACTION
+	updated_at           TIMESTAMP       
  );
 CREATE INDEX id_type ON techmavericks_webcup.transaction ( id_type );
 
@@ -191,8 +184,7 @@ CREATE  TABLE techmavericks_webcup.transaction_jeton (
 	id_utilisateur       INT       ,
 	valeur               DOUBLE       ,
 	created_at           TIMESTAMP       ,
-	updated_at           TIMESTAMP       ,
-	CONSTRAINT transaction_jeton_ibfk_1 FOREIGN KEY ( id_utilisateur ) REFERENCES techmavericks_webcup.utilisateur_front_office( id ) ON DELETE NO ACTION ON UPDATE NO ACTION
+	updated_at           TIMESTAMP       
  );
 CREATE INDEX id_utilisateur ON techmavericks_webcup.transaction_jeton ( id_utilisateur );
 
@@ -201,15 +193,46 @@ CREATE  TABLE techmavericks_webcup.photo_produit (
 	id_produit           INT       ,
 	url                  TEXT  NOT NULL     ,
 	created_at           TIMESTAMP       ,
-	updated_at           TIMESTAMP       ,
-	CONSTRAINT photo_produit_ibfk_1 FOREIGN KEY ( id_produit ) REFERENCES techmavericks_webcup.produit( id ) ON DELETE CASCADE ON UPDATE CASCADE
+	updated_at           TIMESTAMP       
  );
 CREATE INDEX id_produit ON techmavericks_webcup.photo_produit ( id_produit );
+
+ALTER TABLE techmavericks_webcup.photo_produit ADD CONSTRAINT photo_produit_ibfk_1 FOREIGN KEY ( id_produit ) REFERENCES techmavericks_webcup.produit( id ) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE techmavericks_webcup.produit ADD CONSTRAINT produit_ibfk_1 FOREIGN KEY ( id_etat ) REFERENCES techmavericks_webcup.etat_produit( id ) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE techmavericks_webcup.produit ADD CONSTRAINT produit_ibfk_2 FOREIGN KEY ( id_condition ) REFERENCES techmavericks_webcup.condition_produit( id ) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE techmavericks_webcup.produit ADD CONSTRAINT produit_ibfk_3 FOREIGN KEY ( id_localisation ) REFERENCES techmavericks_webcup.ville( id ) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE techmavericks_webcup.produit ADD CONSTRAINT produit_ibfk_4 FOREIGN KEY ( id_categorie ) REFERENCES techmavericks_webcup.categorie( id ) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE techmavericks_webcup.produit ADD CONSTRAINT produit_ibfk_5 FOREIGN KEY ( id_utilisateur ) REFERENCES techmavericks_webcup.utilisateur_front_office( id ) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE techmavericks_webcup.tokens ADD CONSTRAINT tokens_ibfk_1 FOREIGN KEY ( id_user ) REFERENCES techmavericks_webcup.utilisateur_front_office( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE techmavericks_webcup.transaction ADD CONSTRAINT transaction_ibfk_1 FOREIGN KEY ( id_type ) REFERENCES techmavericks_webcup.type_transaction( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE techmavericks_webcup.transaction ADD CONSTRAINT transaction_ibfk_2 FOREIGN KEY ( id_utilisateur ) REFERENCES techmavericks_webcup.utilisateur_front_office( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE techmavericks_webcup.transaction ADD CONSTRAINT transaction_ibfk_3 FOREIGN KEY ( id_produit ) REFERENCES techmavericks_webcup.produit( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE techmavericks_webcup.transaction ADD CONSTRAINT transaction_ibfk_4 FOREIGN KEY ( id_utilisateur_tiers ) REFERENCES techmavericks_webcup.utilisateur_front_office( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE techmavericks_webcup.transaction ADD CONSTRAINT transaction_ibfk_5 FOREIGN KEY ( id_etat ) REFERENCES techmavericks_webcup.etat_transaction( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE techmavericks_webcup.transaction_jeton ADD CONSTRAINT transaction_jeton_ibfk_1 FOREIGN KEY ( id_utilisateur ) REFERENCES techmavericks_webcup.utilisateur_front_office( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE techmavericks_webcup.ville ADD CONSTRAINT ville_ibfk_1 FOREIGN KEY ( id_pays ) REFERENCES techmavericks_webcup.pays( id ) ON DELETE CASCADE ON UPDATE CASCADE;
 
 CREATE VIEW techmavericks_webcup.v_produit_lib_complet AS select `p`.`id` AS `id`,`p`.`titre` AS `titre`,`p`.`description` AS `description`,`p`.`prix` AS `prix`,`p`.`id_etat` AS `id_etat`,`p`.`id_categorie` AS `id_categorie`,`p`.`id_utilisateur` AS `id_utilisateur`,`p`.`id_localisation` AS `id_ville`,`p`.`id_condition` AS `id_condition`,`c`.`nom` AS `categorie`,`u`.`name` AS `utilisateur`,`cp`.`nom` AS `condition_`,`ep`.`nom` AS `etat`,`v`.`nom` AS `ville`,`pa`.`id` AS `id_pays`,`pa`.`nom` AS `pays` from ((((((`techmavericks_webcup`.`produit` `p` join `techmavericks_webcup`.`categorie` `c` on(`c`.`id` = `p`.`id_categorie`)) join `techmavericks_webcup`.`utilisateur_front_office` `u` on(`u`.`id` = `p`.`id_utilisateur`)) join `techmavericks_webcup`.`condition_produit` `cp` on(`cp`.`id` = `p`.`id_condition`)) join `techmavericks_webcup`.`etat_produit` `ep` on(`ep`.`id` = `p`.`id_etat`)) join `techmavericks_webcup`.`ville` `v` on(`v`.`id` = `p`.`id_localisation`)) join `techmavericks_webcup`.`pays` `pa` on(`pa`.`id` = `v`.`id_pays`));
 
 CREATE VIEW techmavericks_webcup.v_ville_lib_complet AS select `v`.`id` AS `id`,`v`.`nom` AS `nom`,`v`.`id_pays` AS `id_pays`,`p`.`nom` AS `pays` from (`techmavericks_webcup`.`ville` `v` join `techmavericks_webcup`.`pays` `p` on(`p`.`id` = `v`.`id_pays`));
 
+INSERT INTO techmavericks_webcup.avatar( id, url ) VALUES ( 1, 'https://robohash.org/4a3d58780f220d8b39a97eb1c9e4140a?set=set3&bgset=&size=200x200');
+INSERT INTO techmavericks_webcup.avatar( id, url ) VALUES ( 2, 'https://gravatar.com/avatar/96952aff22a59789bbd940bd4f46a26b?s=200&d=robohash&r=g');
+INSERT INTO techmavericks_webcup.avatar( id, url ) VALUES ( 3, 'https://gravatar.com/avatar/ea83f5388750df3dd53c64c3ed370a26?s=200&d=robohash&r=g');
+INSERT INTO techmavericks_webcup.avatar( id, url ) VALUES ( 4, 'https://gravatar.com/avatar/e9254a2c866bacfd69c84e2c72195f31?s=200&d=robohash&r=g');
 INSERT INTO techmavericks_webcup.categorie( id, nom, created_at, updated_at ) VALUES ( 1, 'Vehicule', null, null);
 INSERT INTO techmavericks_webcup.categorie( id, nom, created_at, updated_at ) VALUES ( 2, 'Vetement', null, null);
 INSERT INTO techmavericks_webcup.categorie( id, nom, created_at, updated_at ) VALUES ( 3, 'Sport', null, null);

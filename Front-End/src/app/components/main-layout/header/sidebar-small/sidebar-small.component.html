@@ -1,0 +1,73 @@
+<div class="d-flex d-xl-none align-items-center mx-3" (click)="changeSidebarState()">
+    <button class="btn px-0">
+        <i class="bi bi-list fs-5"></i>
+    </button>
+</div>
+
+<!-- THE SIDEBAR -->
+<nav class="sidebar-container d-xl-none" [class.open-sidebar-container]="sidebarState">
+    <div class="sidebar-overlay position-fixed top-0 start-0 w-100 h-100">
+        <div class="sidebar-content d-flex flex-column shadow-100">
+
+            <div class="sidebar-title">
+                <div class="align-items-center d-flex justify-content-start">
+                    <p class="me-2 mb-0">
+                        <strong>Menu</strong>
+                    </p>
+                    <div class="ms-auto">
+                        <span class="btn btn-link text-black p-0" (click)="changeSidebarState()"><i
+                                class="bi bi-x fs-1"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-body">
+
+                <div class="accordion sidebar-link-list accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item sidebar-item-button-animated" style="animation-delay: 270ms;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-close-button" type="button">
+                                <i class="bi bi-house me-3"></i> Accueil
+                            </button>
+                        </h2>
+                    </div>
+                    <div class="accordion-item sidebar-item-button-animated" style="animation-delay: 290ms;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-close-button" type="button">
+                                <i class="bi bi-arrow-left-right me-3"></i> Transactions
+                            </button>
+                        </h2>
+                    </div>
+                    <div class="accordion-item sidebar-item-button-animated" style="animation-delay: 290ms;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-close-button" type="button">
+                                <i class="bi bi-shop me-3"></i> Mes ventes
+                            </button>
+                        </h2>
+                    </div>
+                    <div class="accordion-item sidebar-item-button-animated" style="animation-delay: 250ms;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                aria-controls="flush-collapseTwo">
+                                <i class="bi bi-person-fill me-3"></i> Mon profil
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul class="accordion-link">
+                                    <li><a href=""> <i class="bi bi-person-fill me-3"></i> Mon profil</a></li>
+                                    <li><a href=""> <i class="bi bi-door-closed me-3"></i> Se déconnecter</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</nav>

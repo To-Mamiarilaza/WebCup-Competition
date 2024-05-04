@@ -10,4 +10,9 @@ class VProduitLibComplet extends Model
     use HasFactory;
 
     protected $table = 'v_produit_lib_complet';
+
+    public function photos()
+    {
+        return $this->hasMany(PhotoProduit::class, 'id_produit');
+    }
 }

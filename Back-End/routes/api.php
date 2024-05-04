@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\ConditionProduitApiController;
 use App\Http\Controllers\Api\PaysApiController;
 use App\Http\Controllers\Api\VilleApiController;
 use App\Http\Controllers\Api\VProduitLibCompletApiController;
+use App\Http\Controllers\Api\VVilleLibCompletApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,13 @@ Route::get('/condition-produit', [ConditionProduitApiController::class, 'index']
 Route::get('/pays', [PaysApiController::class, 'index']);
 Route::get('/ville', [VilleApiController::class, 'index']);
 Route::get('/v-produit-lib-complet', [VProduitLibCompletApiController::class, 'index']);
+Route::get('/v-ville-lib-complet', [VVilleLibCompletApiController::class, 'index']);
+Route::get('/current-user-produits', [VProduitLibCompletApiController::class, 'currentUserProduits']);
+Route::get('/recherche-produits', [VProduitLibCompletApiController::class, 'rechercheProduits']);
+
+
+
+
 
 
 

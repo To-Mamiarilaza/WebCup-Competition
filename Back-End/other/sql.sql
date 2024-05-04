@@ -158,3 +158,11 @@ ville v on v.id=p.id_localisation
 join pays pa on pa.id=v.id_pays
 ;
 
+drop view v_ville_lib_complet;
+create or replace view v_ville_lib_complet as
+select
+v.id,v.nom,v.id_pays,p.nom as pays
+from
+ville v
+join pays p on p.id=v.id_pays
+;

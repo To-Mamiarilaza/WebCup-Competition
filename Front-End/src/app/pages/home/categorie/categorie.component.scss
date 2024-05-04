@@ -1,0 +1,59 @@
+.collection {
+    position: relative;
+
+    &:hover .hover-reaction {
+        background-color: var(--special-color) !important;
+        color: white;
+    }
+
+    
+
+    .collection-name {
+        text-transform: uppercase;
+        font-size: 20px;
+        position: absolute;
+        top: 20px;
+        left: 30px;
+        right: 30px;
+        font-weight: 700;
+        color: var(--clear-black-color);
+
+        
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .hover-reaction {
+            width: 35px;
+            height: 35px;
+            background-color: white;
+            font-weight: 800;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            transition: .3s;
+            justify-content: center;
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+        .collection-name {
+            font-size: var(--fs-paragraph);
+            left: 20px;
+            right: 20px;
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        .collection-name {
+            font-size: 14px;
+            left: 20px;
+            right: 20px;
+        }
+    }
+
+    img {
+        width: 100%;
+    }
+}

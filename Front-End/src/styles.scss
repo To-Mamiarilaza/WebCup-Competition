@@ -7,20 +7,29 @@
 }
 
 body {
-    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family: var(--principal-font) !important;
 }
 
 :root {
-    --primary-color: #605DC8;
-    --secondary-color: #8B89E6;
-    --accent-color: #e8e7fa;
-    --shadow-color: #E8E8E8;
-}
+    --principal-font: "Sen", sans-serif;
 
-button.primary {
-    padding: 10px;
-    border: solid 1px var(--primary-color);
-    background: var(--primary-color);
-    color: white;
-    border-radius: 8px;
+    --special-color: #92b6ff;
+    --special-dark-color: #343d51;
+    --second-color: #cadbfe;
+    --tertial-color: #ffd659;
+    --black-color: #222222;
+    --paragraph-color: #6d6c6c;
+    --danger-color: #f80013;
+    --overlay-color: rgba(28, 28, 30, 0.4);
+    --bg-white-color: #f5f5f5;
+    --clear-black-color: #383128;
+    --border-color: rgb(34, 34, 34, 0.1);
+
+    --fs-paragraph: 16px;
+    --fs-icon: 20px;
+    --fs-button: 14px;
+    --fs-currency: 11px;
+
+    --fs-banner-medium: 20px;
+    --fs-banner-big: 60px;
 }

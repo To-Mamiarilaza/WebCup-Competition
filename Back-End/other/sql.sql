@@ -166,3 +166,60 @@ from
 ville v
 join pays p on p.id=v.id_pays
 ;
+
+
+-- 
+create table type_transaction(
+    id int primary key,
+    nom varchar(255)
+);
+
+insert into type_transaction(id,nom) values(0,'vente');
+insert into type_transaction(id,nom) values(1,'achat');
+
+create table etat_transaction(
+    id int primary key,
+    nom varchar(255)
+);
+
+create table transaction(
+    id int primary key auto_increment,
+    id_utilisateur int,
+    id_type int,
+    id_produit int,
+    prix double,
+    id_utilisateur_tiers int,
+    id_etat int,
+    foreign key(id_type) references type_transaction(id),
+    foreign key(id_utilisateur) references utilisateur_front_office(id),
+    foreign key(id_produit) references produit(id),
+    foreign key(id_utilisateur_tiers) references utilisateur_front_office(id),
+    foreign key(id_etat) references etat_transaction(id)
+);
+
+
+create table equivalence_devise(
+    id int primary key auto_increment,
+    nom varchar(255) not null,
+    valeur double not null
+);
+
+create table mode_paiement(
+    id int primary key auto_increment,
+    nom varchar(255)
+);
+
+
+create table transaction_jeton(
+    id int primary key auto_increment,
+    id_utilisateur int,
+    valeur double,
+    foreign key(id_utilisateur) references utilisateur_front_office(id)
+);
+
+create table tokens(
+    id int primary key auto_increment,
+    id_user int not null,
+    token varchar(255) not null,
+    foreign key(id_user) references utilisateur_front_office(id)
+);

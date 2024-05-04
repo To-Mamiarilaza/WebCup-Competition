@@ -28,6 +28,15 @@ class CheckUserToken
              return response()->json(['error' => 'Token invalide'], 401);
          }
 
+         $utilisateurFrontOffice = DB::table('utilisateur_front_office')->where('id', $tokenData->id_user)->first();
+         $request->merge([
+            'id_user' => $utilisateurFrontOffice->id,
+            'name' => $utilisateurFrontOffice->name,
+            'profile' => $utilisateurFrontOffice->profile,
+        ]);
+
+        //  Log::info('DATA : '. $utilisateurFrontOffice->id);
+
          return $next($request);
      }
 }

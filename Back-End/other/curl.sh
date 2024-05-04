@@ -1,3 +1,5 @@
+# techmavericks_webcup
+# --------------------------------------- LOGIN
 curl http://127.0.0.1:8000/api/register \
   -H "Content-Type: application/json" \
   -d '{
@@ -19,8 +21,23 @@ curl http://127.0.0.1:8000/api/login \
 
 curl http://127.0.0.1:8000/api/test \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer CPTATxtVQIzfrkvmAV0XID9pjmtm0ldFEC8qxbk1DQnDHgAQJF2vZLCbNzTu" \
+  -H "Authorization: Bearer 2FmaZ6hC8zmDnmnzGvqkHccIE9peTHD0rHNiEpWpdIohpzKcTiAmC80CN4MI"
+
+# --------------------------------------------- GET
+curl -X GET http://127.0.0.1:8000/api/mode_paiements \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer 2FmaZ6hC8zmDnmnzGvqkHccIE9peTHD0rHNiEpWpdIohpzKcTiAmC80CN4MI"
+
+curl -X GET http://127.0.0.1:8000/api/equivalence_devises \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer 2FmaZ6hC8zmDnmnzGvqkHccIE9peTHD0rHNiEpWpdIohpzKcTiAmC80CN4MI"
+
+
+# --------------------------------------------- AJOUT JETON
+curl http://127.0.0.1:8000/api/transaction_jetons \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer 2FmaZ6hC8zmDnmnzGvqkHccIE9peTHD0rHNiEpWpdIohpzKcTiAmC80CN4MI" \
   -d '{
-    "mail": "logan@gmail.com",
-    "password": "logan"
+    "valeur_devise": 10,
+    "montant": 1000
   }'

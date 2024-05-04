@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CategorieApiController;
-
+use App\Http\Controllers\Authentification\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +21,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/categories', [CategorieApiController::class, 'index']);
+
+
+// Front office
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::middleware(['CheckUserToken'])->group(function () {
+    Route::post('/test', [AuthController::class, 'test']);
+    // Vos routes protégées par le token
+});
+
 

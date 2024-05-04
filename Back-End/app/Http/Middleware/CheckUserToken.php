@@ -19,9 +19,9 @@ class CheckUserToken
 
      public function handle(Request $request, Closure $next)
      {
-         $token = $request->header('Authorization');
+         $token = $request->header('ApiToken');
          Log::info($request->header);
-         $token = str_replace('Bearer ', '', $token);
+        //  $token = str_replace('Bearer ', '', $token);
 
          $tokenData = DB::table('tokens')->where('token', $token)->first();
 

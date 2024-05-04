@@ -23,10 +23,20 @@ Route::get('/login', [UtilisateurController::class, 'showLoginForm']);
 Route::post('/login', [UtilisateurController::class, 'login']);
 
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\ProduitController;
+use App\Http\Controllers\VProduitLibCompletController;
 
 Route::get('/categories', [CategorieController::class, 'index'])->name('categorie.index');
 Route::post('/categories', [CategorieController::class, 'store']);
 Route::get('/categories/{category}/edit', [CategorieController::class, 'edit'])->name('categories.edit');
 Route::post('/categories/{category}', [CategorieController::class, 'update'])->name('categories.update');
+
+Route::get('/nouvelle_ventes', [VProduitLibCompletController::class, 'index']);
+Route::get('/produits/{id}', [VProduitLibCompletController::class, 'details'])->name('produit.details');
+Route::get('/vente-valider/{id}', [ProduitController::class, 'venteValider'])->name('vente.valider');
+Route::get('/vente-refuser/{id}', [ProduitController::class, 'venteRefuser'])->name('vente.refuser');
+
+
+
 
 

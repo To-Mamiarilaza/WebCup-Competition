@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\ModePaiementApiController;
 use App\Http\Controllers\Api\PaysApiController;
 use App\Http\Controllers\Api\TransactionApiController;
 use App\Http\Controllers\Api\VenteApiController;
+use App\Http\Controllers\Api\ProduitApiController;
 use App\Http\Controllers\Api\VilleApiController;
 use App\Http\Controllers\Api\VProduitLibCompletApiController;
 use App\Http\Controllers\Api\VVilleLibCompletApiController;
@@ -42,21 +43,13 @@ Route::get('/current-user-produits', [VProduitLibCompletApiController::class, 'c
 Route::get('/recherche-produits', [VProduitLibCompletApiController::class, 'rechercheProduits']);
 Route::get('/produits/{id}', [VProduitLibCompletApiController::class, 'produit']);
 Route::get('/related-produits/{id_produit}', [VProduitLibCompletApiController::class, 'relatedProduits']);
+
 Route::get('/mode-paiements', [ModePaiementApiController::class, 'index']);
 Route::get('/devises', [EquivalenceDeviseApiController::class, 'index']);
-
-
-
-
-
-
-
-
 
 // Front office
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-
 
 Route::middleware(['checkUserToken'])->group(function () {
     Route::post('/test', [AuthController::class, 'test']);
@@ -68,6 +61,8 @@ Route::middleware(['checkUserToken'])->group(function () {
     Route::get('/historique_ventes', [VenteApiController::class, 'historiqueVente']);
     Route::get('/annulation_vente', [VenteApiController::class, 'annulerVente']);
 
+    Route::post('/vente-jetons', [TransactionJetonApiController::class, 'store']); // valeur_devise, montant, id_user
+    Route::post('/new-vente',[ProduitApiController::class,'newVente']);
     // Vos routes protégées par le token
 });
 

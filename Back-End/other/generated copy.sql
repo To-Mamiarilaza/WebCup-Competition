@@ -1,5 +1,3 @@
-CREATE SCHEMA techmavericks_webcup;
-
 CREATE  TABLE techmavericks_webcup.categorie ( 
 	id                   INT  NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
 	nom                  VARCHAR(255)  NOT NULL     ,
@@ -219,23 +217,21 @@ INSERT INTO techmavericks_webcup.categorie( id, nom, created_at, updated_at ) VA
 INSERT INTO techmavericks_webcup.condition_produit( id, nom, created_at, updated_at ) VALUES ( 1, 'Nouveau', null, null);
 INSERT INTO techmavericks_webcup.condition_produit( id, nom, created_at, updated_at ) VALUES ( 2, 'Occasion', null, null);
 INSERT INTO techmavericks_webcup.condition_produit( id, nom, created_at, updated_at ) VALUES ( 3, 'Rarement utilise', null, null);
+INSERT INTO techmavericks_webcup.equivalence_devise( id, nom, valeur, created_at, updated_at ) VALUES ( 1, 'Ariary', 100.0, null, null);
+INSERT INTO techmavericks_webcup.equivalence_devise( id, nom, valeur, created_at, updated_at ) VALUES ( 2, 'Euro', 0.002, null, null);
 INSERT INTO techmavericks_webcup.etat_produit( id, nom, created_at, updated_at ) VALUES ( 0, 'Non validee', null, null);
 INSERT INTO techmavericks_webcup.etat_produit( id, nom, created_at, updated_at ) VALUES ( 10, 'Validee', null, null);
+INSERT INTO techmavericks_webcup.etat_produit( id, nom, created_at, updated_at ) VALUES ( 15, 'Refuse', null, null);
 INSERT INTO techmavericks_webcup.etat_produit( id, nom, created_at, updated_at ) VALUES ( 20, 'En vente', null, null);
 INSERT INTO techmavericks_webcup.etat_produit( id, nom, created_at, updated_at ) VALUES ( 30, 'Indisponible', null, null);
 INSERT INTO techmavericks_webcup.etat_produit( id, nom, created_at, updated_at ) VALUES ( 40, 'Vendu', null, null);
-INSERT INTO techmavericks_webcup.migrations( id, migration, batch ) VALUES ( 1, '2014_10_12_000000_create_users_table', 1);
-INSERT INTO techmavericks_webcup.migrations( id, migration, batch ) VALUES ( 2, '2014_10_12_100000_create_password_resets_table', 1);
-INSERT INTO techmavericks_webcup.migrations( id, migration, batch ) VALUES ( 3, '2019_08_19_000000_create_failed_jobs_table', 1);
-INSERT INTO techmavericks_webcup.migrations( id, migration, batch ) VALUES ( 4, '2019_12_14_000001_create_personal_access_tokens_table', 1);
-INSERT INTO techmavericks_webcup.migrations( id, migration, batch ) VALUES ( 5, '2024_05_04_110347_add_timestamps_to_tables', 1);
-INSERT INTO techmavericks_webcup.migrations( id, migration, batch ) VALUES ( 6, '2024_05_04_110347_add_timestamps_to_tables copy', 2);
+INSERT INTO techmavericks_webcup.mode_paiement( id, nom, created_at, updated_at ) VALUES ( 4, 'Mobile Money', null, null);
+INSERT INTO techmavericks_webcup.mode_paiement( id, nom, created_at, updated_at ) VALUES ( 5, 'Paypal', null, null);
 INSERT INTO techmavericks_webcup.pays( id, nom, created_at, updated_at ) VALUES ( 1, 'Madagascar', null, null);
 INSERT INTO techmavericks_webcup.pays( id, nom, created_at, updated_at ) VALUES ( 2, 'Maurice', null, null);
 INSERT INTO techmavericks_webcup.pays( id, nom, created_at, updated_at ) VALUES ( 3, 'Seychelles', null, null);
 INSERT INTO techmavericks_webcup.pays( id, nom, created_at, updated_at ) VALUES ( 4, 'La Reunion', null, null);
 INSERT INTO techmavericks_webcup.utilisateur( id, nom, mdp, privilege ) VALUES ( 1, 'techmavericks', 'rollback001', 'admin');
-INSERT INTO techmavericks_webcup.utilisateur_front_office( id, email, telephone, avatar, name, password, profile, created_at, updated_at ) VALUES ( 1, 'user1@mail.com', '0323245665', '', 'user1', 'user1', 0, null, null);
 INSERT INTO techmavericks_webcup.ville( id, nom, id_pays, created_at, updated_at ) VALUES ( 1, 'Antananarivo', 1, null, null);
 INSERT INTO techmavericks_webcup.ville( id, nom, id_pays, created_at, updated_at ) VALUES ( 2, 'Toamasina', 1, null, null);
 INSERT INTO techmavericks_webcup.ville( id, nom, id_pays, created_at, updated_at ) VALUES ( 3, 'Port Louis', 2, null, null);
@@ -244,15 +240,3 @@ INSERT INTO techmavericks_webcup.ville( id, nom, id_pays, created_at, updated_at
 INSERT INTO techmavericks_webcup.ville( id, nom, id_pays, created_at, updated_at ) VALUES ( 6, 'Saint-Paul', 3, null, null);
 INSERT INTO techmavericks_webcup.ville( id, nom, id_pays, created_at, updated_at ) VALUES ( 7, 'Victoria', 4, null, null);
 INSERT INTO techmavericks_webcup.ville( id, nom, id_pays, created_at, updated_at ) VALUES ( 8, 'Anse Boileau', 4, null, null);
-INSERT INTO techmavericks_webcup.produit( id, titre, description, prix, id_etat, id_condition, id_localisation, id_categorie, id_utilisateur, created_at, updated_at ) VALUES ( 1, 'Samsung Galaxy S20', 'Smartphone haut de gamme avec un ecran AMOLED de 6.2 pouces, un processeur puissant et un systeme de camera triple.', 799.99, 0, 1, 1, 1, 1, null, null);
-INSERT INTO techmavericks_webcup.produit( id, titre, description, prix, id_etat, id_condition, id_localisation, id_categorie, id_utilisateur, created_at, updated_at ) VALUES ( 2, 'Velo de montagne tout suspendu', 'Velo de montagne tout suspendu avec cadre en aluminium, suspension a double pivot et freins a disque hydrauliques.', 1499.99, 10, 1, 1, 2, 1, null, null);
-INSERT INTO techmavericks_webcup.produit( id, titre, description, prix, id_etat, id_condition, id_localisation, id_categorie, id_utilisateur, created_at, updated_at ) VALUES ( 3, 'Chemise en lin pour homme', 'Chemise en lin legere et respirante, parfaite pour les journees chaudes. Disponible en plusieurs couleurs et tailles.', 49.99, 20, 1, 1, 3, 1, null, null);
-INSERT INTO techmavericks_webcup.produit( id, titre, description, prix, id_etat, id_condition, id_localisation, id_categorie, id_utilisateur, created_at, updated_at ) VALUES ( 4, 'Harry Potter et la pierre philosophale', 'Premier livre de la serie Harry Potter ecrit par J.K. Rowling. Un classique de la litterature fantastique pour tous les ages.', 12.99, 30, 2, 1, 4, 1, null, null);
-INSERT INTO techmavericks_webcup.produit( id, titre, description, prix, id_etat, id_condition, id_localisation, id_categorie, id_utilisateur, created_at, updated_at ) VALUES ( 5, 'Refrigerateur ? deux portes', 'Refrigerateur spacieux avec congelateur superieur, parfait pour stocker les aliments frais et surgeles.', 799.99, 40, 2, 1, 1, 1, null, null);
-INSERT INTO techmavericks_webcup.produit( id, titre, description, prix, id_etat, id_condition, id_localisation, id_categorie, id_utilisateur, created_at, updated_at ) VALUES ( 6, 'Nikon D850 Appareil photo reflex numerique', 'Appareil photo reflex numerique professionnel avec un capteur haute resolution de 45.7 MP et un systeme AF ultra-precis.', 2499.99, 10, 3, 1, 2, 1, null, null);
-INSERT INTO techmavericks_webcup.photo_produit( id, id_produit, url, created_at, updated_at ) VALUES ( 1, 1, '', null, null);
-INSERT INTO techmavericks_webcup.photo_produit( id, id_produit, url, created_at, updated_at ) VALUES ( 2, 2, '', null, null);
-INSERT INTO techmavericks_webcup.photo_produit( id, id_produit, url, created_at, updated_at ) VALUES ( 3, 3, '', null, null);
-INSERT INTO techmavericks_webcup.photo_produit( id, id_produit, url, created_at, updated_at ) VALUES ( 4, 4, '', null, null);
-INSERT INTO techmavericks_webcup.photo_produit( id, id_produit, url, created_at, updated_at ) VALUES ( 5, 5, '', null, null);
-INSERT INTO techmavericks_webcup.photo_produit( id, id_produit, url, created_at, updated_at ) VALUES ( 6, 6, '', null, null);

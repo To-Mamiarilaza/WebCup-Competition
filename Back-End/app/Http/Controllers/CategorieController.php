@@ -25,9 +25,16 @@ class CategorieController extends Controller
         return redirect('/categories')->with('success', 'Category created successfully.');
     }
 
-    public function destroy(Categorie $categorie)
+    public function edit(Categorie $category)
     {
-        $categorie->delete();
-        return redirect('/categories')->with('success', 'Category deleted successfully.');
+        return view('categorie.edit', compact('category'));
+    }
+
+    public function update(Request $request, Categorie $category)
+    {
+        $category->update([
+            'nom' => $request->input('nom'),
+        ]);
+        return redirect()->route('categorie.index')->with('success', 'Category updated successfully.');
     }
 }

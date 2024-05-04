@@ -3,7 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CategorieApiController;
-
+use App\Http\Controllers\Api\ConditionProduitApiController;
+use App\Http\Controllers\Api\PaysApiController;
+use App\Http\Controllers\Api\VilleApiController;
+use App\Http\Controllers\Api\VProduitLibCompletApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +24,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/categories', [CategorieApiController::class, 'index']);
+Route::get('/condition-produit', [ConditionProduitApiController::class, 'index']);
+Route::get('/pays', [PaysApiController::class, 'index']);
+Route::get('/ville', [VilleApiController::class, 'index']);
+Route::get('/v-produit-lib-complet', [VProduitLibCompletApiController::class, 'index']);
+
+
 

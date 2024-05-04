@@ -55,7 +55,7 @@ create table ville(
     id int primary key auto_increment,
     nom varchar(255),
     id_pays int,
-    foreign key(id_pays) references pays(id)
+    foreign key(id_pays) references pays(id) on update cascade on delete cascade
 );
 
 insert into ville(nom,id_pays) values('Antananarivo',1);
@@ -67,6 +67,19 @@ insert into ville(nom, id_pays) values ('Saint-Paul', 3);
 insert into ville(nom, id_pays) values ('Victoria', 4);
 insert into ville(nom, id_pays) values ('Anse Boileau', 4);
 
+CREATE  TABLE utilisateur_front_office ( 
+	id                   INT  NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
+	email                VARCHAR(255)  NOT NULL     ,
+	telephone            VARCHAR(20)  NOT NULL     ,
+	avatar               VARCHAR(255)  NOT NULL     ,
+	name                 VARCHAR(50)  NOT NULL     ,
+	password             VARCHAR(255)  NOT NULL     ,
+	profile              INT  NOT NULL DEFAULT (0)    
+ );
+
+insert into utilisateur_front_office(email,telephone,avatar,name,password) values('user1@mail.com','0323245665','','user1','user1');
+
+
 create table produit(
     id int primary key auto_increment,
     titre varchar(255) not null,
@@ -76,31 +89,32 @@ create table produit(
     id_condition int,
     id_localisation int,
     id_categorie int,
-    foreign key(id_etat) references etat_produit(id),
-    foreign key(id_condition) references condition_produit(id),
-    foreign key(id_localisation) references ville(id),
-    foreign key(id_categorie) references categorie(id)
+    id_utilisateur int,
+    foreign key(id_etat) references etat_produit(id) on update cascade on delete cascade,
+    foreign key(id_condition) references condition_produit(id) on update cascade on delete cascade,
+    foreign key(id_localisation) references ville(id) on update cascade on delete cascade,
+    foreign key(id_categorie) references categorie(id) on update cascade on delete cascade,
+    foreign key(id_utilisateur) references utilisateur_front_office(id) on update cascade on delete cascade
 );
 
-insert into produit(titre, id_categorie, description, prix, id_condition, id_localisation, id_etat) 
-values('Samsung Galaxy S20', 1, 'Smartphone haut de gamme avec un ecran AMOLED de 6.2 pouces, un processeur puissant et un systeme de camera triple.', 799.99, 1, 1, 0);
-insert into produit(titre, id_categorie, description, prix, id_condition, id_localisation, id_etat) 
-values('Velo de montagne tout suspendu', 2, 'Velo de montagne tout suspendu avec cadre en aluminium, suspension a double pivot et freins a disque hydrauliques.', 1499.99, 1, 1, 10);
-insert into produit(titre, id_categorie, description, prix, id_condition, id_localisation, id_etat) 
-values('Chemise en lin pour homme', 3, 'Chemise en lin legere et respirante, parfaite pour les journees chaudes. Disponible en plusieurs couleurs et tailles.', 49.99, 1, 1, 20);
-insert into produit(titre, id_categorie, description, prix, id_condition, id_localisation, id_etat) 
-values('Harry Potter et la pierre philosophale', 4, 'Premier livre de la serie Harry Potter ecrit par J.K. Rowling. Un classique de la litterature fantastique pour tous les ages.', 12.99, 2, 1, 30);
-insert into produit(titre, id_categorie, description, prix, id_condition, id_localisation, id_etat) 
-values('Refrigerateur à deux portes', 1, 'Refrigerateur spacieux avec congelateur superieur, parfait pour stocker les aliments frais et surgeles.', 799.99, 2, 1, 40);
-insert into produit(titre, id_categorie, description, prix, id_condition, id_localisation, id_etat) 
-values('Nikon D850 Appareil photo reflex numerique', 2, 'Appareil photo reflex numerique professionnel avec un capteur haute resolution de 45.7 MP et un systeme AF ultra-precis.', 2499.99, 3, 1, 10);
-
+insert into produit(titre, id_categorie, description, prix, id_condition, id_localisation, id_etat, id_utilisateur) 
+values('Samsung Galaxy S20', 1, 'Smartphone haut de gamme avec un ecran AMOLED de 6.2 pouces, un processeur puissant et un systeme de camera triple.', 799.99, 1, 1, 0,1);
+insert into produit(titre, id_categorie, description, prix, id_condition, id_localisation, id_etat, id_utilisateur) 
+values('Velo de montagne tout suspendu', 2, 'Velo de montagne tout suspendu avec cadre en aluminium, suspension a double pivot et freins a disque hydrauliques.', 1499.99, 1, 1, 10,1);
+insert into produit(titre, id_categorie, description, prix, id_condition, id_localisation, id_etat, id_utilisateur) 
+values('Chemise en lin pour homme', 3, 'Chemise en lin legere et respirante, parfaite pour les journees chaudes. Disponible en plusieurs couleurs et tailles.', 49.99, 1, 1, 20,1);
+insert into produit(titre, id_categorie, description, prix, id_condition, id_localisation, id_etat, id_utilisateur) 
+values('Harry Potter et la pierre philosophale', 4, 'Premier livre de la serie Harry Potter ecrit par J.K. Rowling. Un classique de la litterature fantastique pour tous les ages.', 12.99, 2, 1, 30,1);
+insert into produit(titre, id_categorie, description, prix, id_condition, id_localisation, id_etat, id_utilisateur) 
+values('Refrigerateur à deux portes', 1, 'Refrigerateur spacieux avec congelateur superieur, parfait pour stocker les aliments frais et surgeles.', 799.99, 2, 1, 40,1);
+insert into produit(titre, id_categorie, description, prix, id_condition, id_localisation, id_etat, id_utilisateur) 
+values('Nikon D850 Appareil photo reflex numerique', 2, 'Appareil photo reflex numerique professionnel avec un capteur haute resolution de 45.7 MP et un systeme AF ultra-precis.', 2499.99, 3, 1, 10,1);
 
 create table photo_produit(
     id int primary key auto_increment,
     id_produit int,
     url text not null,
-    foreign key(id_produit) references produit(id)
+    foreign key(id_produit) references produit(id) on update cascade on delete cascade
 );
 
 insert into photo_produit(id_produit,url) values(1,'');
@@ -110,4 +124,37 @@ insert into photo_produit(id_produit,url) values(4,'');
 insert into photo_produit(id_produit,url) values(5,'');
 insert into photo_produit(id_produit,url) values(6,'');
 
+
+update categorie set created_at='2024-05-04 10:49:46', updated_at='2024-05-04 10:49:46';
+update etat_produit set created_at='2024-05-04 10:49:46', updated_at='2024-05-04 10:49:46';
+update condition_produit set created_at='2024-05-04 10:49:46', updated_at='2024-05-04 10:49:46';
+update photo_produit set created_at='2024-05-04 10:49:46', updated_at='2024-05-04 10:49:46';
+update pays set created_at='2024-05-04 10:49:46', updated_at='2024-05-04 10:49:46';
+update ville set created_at='2024-05-04 10:49:46', updated_at='2024-05-04 10:49:46';
+
+drop view v_produit_lib_complet;
+create or replace view v_produit_lib_complet as 
+select
+p.id,p.titre,p.description,p.prix,p.id_etat,p.id_categorie,p.id_utilisateur,p.id_localisation as id_ville,p.id_condition,
+c.nom as categorie,
+u.name as utilisateur,
+cp.nom as condition_,
+ep.nom as etat,
+v.nom as ville,
+pa.id as id_pays,
+pa.nom as pays
+from 
+produit p 
+join 
+categorie c on c.id=p.id_categorie
+join
+utilisateur_front_office u on u.id=p.id_utilisateur
+join 
+condition_produit cp on cp.id=p.id_condition
+join
+etat_produit ep on ep.id=p.id_etat
+join
+ville v on v.id=p.id_localisation
+join pays pa on pa.id=v.id_pays
+;
 

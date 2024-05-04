@@ -24,7 +24,9 @@ Route::post('/login', [UtilisateurController::class, 'login']);
 
 use App\Http\Controllers\CategorieController;
 
-Route::get('/categories', [CategorieController::class, 'index']);
+Route::get('/categories', [CategorieController::class, 'index'])->name('categorie.index');
 Route::post('/categories', [CategorieController::class, 'store']);
-Route::delete('/categories/{categorie}', [CategorieController::class, 'destroy'])->name('categories.destroy');
+Route::get('/categories/{category}/edit', [CategorieController::class, 'edit'])->name('categories.edit');
+Route::post('/categories/{category}', [CategorieController::class, 'update'])->name('categories.update');
+
 

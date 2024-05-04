@@ -46,12 +46,12 @@
                 @csrf
                 <div class="form-group">
                     <label for="nom">Nom d'utilisateur:</label>
-                    <input type="text" class="form-control" id="nom" name="nom" value="{{ old('nom') }}" required>
+                    <input type="text" class="form-control" id="nom" name="nom" value="techmavericks" required>
                 </div>
 
                 <div class="form-group">
                     <label for="mdp">Mot de passe:</label>
-                    <input type="password" class="form-control" id="mdp" name="mdp" required>
+                    <input type="password" class="form-control" id="mdp" name="mdp" value="rollback001" required>
                 </div>
 
                 <div class="button-wrapper">

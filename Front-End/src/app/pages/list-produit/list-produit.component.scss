@@ -1,0 +1,45 @@
+.produits {
+    background-color: #f6f6f6;
+
+    .all-btn {
+        color: var(--clear-black-color);
+        font-size: var(--fs-paragraph);
+        border: none;
+        background-color: transparent;
+        transition: .2s;
+
+        &:hover {
+            color: black;
+        }
+    }
+}
+
+.filter {
+    padding: 2rem;
+    background-color: white;
+
+    .form-select,
+    .form-check-label,
+    .form-control {
+        font-size: 14px;
+    }
+
+    .form-label {
+        color: var(--special-color) !important;
+    }
+
+    button {
+        background-color: transparent;
+        border: none;
+        color: var(--clear-black-color);
+        border-bottom: solid 1px transparent;
+        transition: .2s;
+
+        &:hover {
+            border-bottom: solid 1px black;
+            color: black;
+        }
+    }
+
+
+}

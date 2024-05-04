@@ -9,6 +9,7 @@ import { ProductSheetComponent } from "./pages/product/product-sheet/product-she
 import { TransactionComponent } from "./pages/transaction/transaction.component";
 import { TokenPurchaseComponent } from "./pages/token-purchase/token-purchase.component";
 import { ImageUploadComponent } from "./components/image-upload/image-upload.component";
+import { authGuard } from "./guard/auth.guard";
 
 export const routes: Routes = [
   {
@@ -42,8 +43,16 @@ export const routes: Routes = [
     path: "page",
     component: FullPageLayoutComponent,
     children: [
-      { path: "sign-in", component: SignInComponent, title: "Se connecter" },
-      { path: "sign-up", component: SignUpComponent, title: "S'inscrire" },
+      {
+        path: "sign-in",
+        component: SignInComponent,
+        title: "Se connecter",
+      },
+      {
+        path: "sign-up",
+        component: SignUpComponent,
+        title: "S'inscrire",
+      },
     ],
   },
   { path: "", redirectTo: "/main", pathMatch: "full" },

@@ -7,21 +7,23 @@
       <div class="col-md-6">
         <p class="title text-center">Revenez dans le royaume de Ken</p>
         <div class="form-outline mb-4">
-            <label class="form-label" for="email">Adresse email</label>
+          <label class="form-label" for="email">Adresse email</label>
           <input
             type="email"
             id="email"
             class="form-control"
+            [(ngModel)]="email"
             placeholder="Entrer une adresse email valid"
           />
         </div>
 
         <div class="form-outline mb-3">
-            <label class="form-label" for="password">Mot de passe</label>
+          <label class="form-label" for="password">Mot de passe</label>
           <input
             type="password"
             id="password"
             class="form-control"
+            [(ngModel)]="password"
             placeholder="Entrer le mot de passe"
           />
         </div>
@@ -29,15 +31,28 @@
         <div class="text-center text-lg-start mt-5 pt-2">
           <button
             type="button"
-            data-mdb-button-init
-            data-mdb-ripple-init
             class="btn btn-primary btn-lg w-100"
             style="padding-left: 2.5rem; padding-right: 2.5rem"
+            (click)="signIn()"
           >
-            Entrer
+            <span
+              *ngIf="loading$ | async; else text"
+              class="spinner-border text-primary"
+              role="status"
+            ></span>
+            <ng-template #text> Entrer </ng-template>
           </button>
+
+          <div
+            class="mt-2 alert alert-danger"
+            *ngIf="error$ | async as error"
+            role="alert"
+          >
+            {{ error }}
+          </div>
           <p class="small fw-bold mt-5 pt-1 mb-2">
-            Vous êtes nouveau ? <a href="#!" class="link-danger">Direction le royaume de Ken</a>
+            Vous êtes nouveau ?
+            <a href="#!" class="link-danger">Direction le royaume de Ken</a>
           </p>
         </div>
       </div>

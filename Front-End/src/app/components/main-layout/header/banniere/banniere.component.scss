@@ -1,0 +1,146 @@
+.carousel {
+
+    .my-carousel-indicators {
+        position: absolute;
+        z-index: 10;
+        color: var(--special-dark-color);
+        bottom: 8%;
+        left: 5%;
+
+        button {
+            margin: 0 .5rem !important;
+            border: none;
+            text-transform: uppercase;
+            background-color: transparent !important;
+            font-size: var(--fs-button);
+            font-weight: 500;
+            padding-bottom: 1px;
+            transition: .2s;
+            border-bottom: 2px solid transparent;
+
+
+            &:focus {
+                border-bottom: 2px solid var(--special-dark-color);
+            }
+        }
+
+        @media screen and (max-width: 1200px) {
+            button {
+                font-size: 10px;
+                border-bottom: 1px solid transparent;
+                margin: 0 .3rem !important;
+
+                &:focus {
+                    border-bottom: 1px solid var(--special-dark-color);
+                }
+            }
+        }
+
+    }
+
+    .active {
+        .carousel-content {
+            opacity: 1 !important;
+            transform: translateX(0px) !important;
+        }
+    }
+
+    .carousel-item {
+        .carousel-content {
+            position: absolute;
+            left: 5%;
+            top: 18%;
+            color: var(--black-color);
+            width: 50%;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: transform .5s;
+
+            h5 {
+                font-style: var(--fs-banner-medium);
+                text-transform: capitalize;
+            }
+
+            p {
+                font-size: var(--fs-banner-big);
+                font-weight: 700;
+                line-height: 70px;
+                margin-top: 1.2rem;
+            }
+
+            button {
+                padding: 1rem 2rem;
+                color: white;
+                font-size: var(--fs-paragraph);
+                background-color: var(--black-color);
+                text-transform: uppercase;
+                letter-spacing: 4px;
+                border: none;
+                margin-top: 1.5rem;
+                transition: .3s;
+
+                &:hover {
+                    background-color: var(--special-dark-color);
+                }
+            }
+        }
+
+
+
+        @media screen and (max-width: 1200px) {
+            .carousel-content {
+                h5 {
+                    font-size: var(--fs-paragraph);
+                }
+
+                p {
+                    font-size: 40px;
+                    line-height: 50px;
+                }
+
+                button {
+                    font-size: var(--fs-button);
+                }
+            }
+        }
+
+        @media screen and (max-width: 724px) {
+            .carousel-content {
+
+                h5 {
+                    font-size: var(--fs-paragraph);
+                }
+
+                p {
+                    font-size: 23px;
+                    line-height: 30px;
+                }
+
+                button {
+                    font-size: 14px;
+                    margin-top: 1rem;
+                }
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .carousel-content {
+
+                h5 {
+                    font-size: var(--fs-button);
+                }
+
+                p {
+                    font-size: var(--fs-paragraph);
+                    line-height: 20px;
+                }
+
+                button {
+                    font-size: 10px;
+                    margin-top: .2rem;
+                    padding: 10px;
+                }
+            }
+        }
+    }
+}

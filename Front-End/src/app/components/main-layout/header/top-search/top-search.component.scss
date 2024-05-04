@@ -1,0 +1,35 @@
+.navbar-search {
+    width: 450px;
+
+    .top-search-input {
+        border: 1px solid var(--border-color);
+        padding: 0.7rem 1.2rem;
+    
+        border-radius: 5px;
+    
+        input {
+            width: 65%;
+            border: none;
+    
+            &:focus-visible {
+                outline: none;
+                border: none;
+            }
+        }
+    
+        button {
+            background-color: var(--special-color);
+            color: white;
+            font-size: var(--fs-button);
+            font-weight: 600;
+            transition: .4s;
+
+            &:hover {
+                background-color: var(--second-color);
+                color: var(--clear-black-color);
+            }
+        }
+    
+    
+    }
+}

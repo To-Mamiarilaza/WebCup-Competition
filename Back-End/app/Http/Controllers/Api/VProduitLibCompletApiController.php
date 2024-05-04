@@ -24,7 +24,8 @@ class VProduitLibCompletApiController extends Controller
         $ville = $request->input('ville');
         $pays = $request->input('pays');
         $page = $request->input('page', 1);
-        $produits = VProduitLibComplet::where('prix', '>=', $minPrice)
+        $produits = VProduitLibComplet::where('etat', 'En vente')
+            ->where('prix', '>=', $minPrice)
             ->where('prix', '<=', $maxPrice)
             ->whereIn('id_categorie', $categories)
             ->whereIn('id_condition', $conditions)
@@ -38,7 +39,30 @@ class VProduitLibCompletApiController extends Controller
     {
         $cle = $request->input('cle');
         $page = $request->input('page', 1);
-        $produits = VProduitLibComplet::where('titre', 'like', '%' . $cle . '%')->paginate(10);
+        $produits = VProduitLibComplet::where('etat', 'En vente')
+            ->where('titre', 'like', '%' . $cle . '%')->paginate(10);
         return response()->json($produits);
+    }
+
+    public function produit($id)
+    {
+        $produit = VProduitLibComplet::find($id);
+        if (!$produit) {
+            return response()->json(['error' => 'Produit non trouvee'], 404);
+        }
+        return response()->json($produit);
+    }
+
+    public function relatedProduits($id_produit)
+    {
+        $product = VProduitLibComplet::find($id_produit);
+        if (!$product) {
+            return response()->json(['error' => 'Product not found'], 404);
+        }
+        $relatedProducts = VProduitLibComplet::where('id_categorie', $product->id_categorie)
+                                            ->where('id', '!=', $product->id)
+                                            ->limit(4)
+                                            ->get();
+        return response()->json($relatedProducts);
     }
 }

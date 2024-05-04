@@ -41,3 +41,18 @@ curl http://127.0.0.1:8000/api/transaction_jetons \
     "valeur_devise": 10,
     "montant": 1000
   }'
+
+
+# --------------------------------------------- ACHAT PRODUIT
+curl http://127.0.0.1:8000/api/achat_produits \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer 2FmaZ6hC8zmDnmnzGvqkHccIE9peTHD0rHNiEpWpdIohpzKcTiAmC80CN4MI" \
+  -d '{
+    "id_produit": 3,
+  }'
+
+# --------------------------------------------- ACHAT PRODUIT
+curl http://127.0.0.1:8000/api/transactions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer 2FmaZ6hC8zmDnmnzGvqkHccIE9peTHD0rHNiEpWpdIohpzKcTiAmC80CN4MI" \
+  -X POST

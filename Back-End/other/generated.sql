@@ -1,43 +1,43 @@
 CREATE SCHEMA techmavericks_webcup;
 
-CREATE  TABLE techmavericks_webcup.categorie ( 
+CREATE  TABLE techmavericks_webcup.categorie (
 	id                   INT  NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
 	nom                  VARCHAR(255)  NOT NULL     ,
 	created_at           TIMESTAMP       ,
 	updated_at           TIMESTAMP       ,
-	CONSTRAINT nom UNIQUE ( nom ) 
+	CONSTRAINT nom UNIQUE ( nom )
  ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE  TABLE techmavericks_webcup.condition_produit ( 
+CREATE  TABLE techmavericks_webcup.condition_produit (
 	id                   INT  NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
 	nom                  VARCHAR(255)  NOT NULL     ,
 	created_at           TIMESTAMP       ,
-	updated_at           TIMESTAMP       
+	updated_at           TIMESTAMP
  ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE  TABLE techmavericks_webcup.equivalence_devise ( 
+CREATE  TABLE techmavericks_webcup.equivalence_devise (
 	id                   INT  NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
 	nom                  VARCHAR(255)  NOT NULL     ,
 	valeur               DOUBLE  NOT NULL     ,
 	created_at           TIMESTAMP       ,
-	updated_at           TIMESTAMP       
+	updated_at           TIMESTAMP
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE  TABLE techmavericks_webcup.etat_produit ( 
+CREATE  TABLE techmavericks_webcup.etat_produit (
 	id                   INT  NOT NULL     PRIMARY KEY,
 	nom                  VARCHAR(255)  NOT NULL     ,
 	created_at           TIMESTAMP       ,
-	updated_at           TIMESTAMP       
+	updated_at           TIMESTAMP
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE  TABLE techmavericks_webcup.etat_transaction ( 
+CREATE  TABLE techmavericks_webcup.etat_transaction (
 	id                   INT  NOT NULL     PRIMARY KEY,
 	nom                  VARCHAR(255)       ,
 	created_at           TIMESTAMP       ,
-	updated_at           TIMESTAMP       
+	updated_at           TIMESTAMP
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE  TABLE techmavericks_webcup.failed_jobs ( 
+CREATE  TABLE techmavericks_webcup.failed_jobs (
 	id                   BIGINT UNSIGNED NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
 	uuid                 VARCHAR(255)  NOT NULL     ,
 	connection           TEXT  NOT NULL     ,
@@ -45,38 +45,38 @@ CREATE  TABLE techmavericks_webcup.failed_jobs (
 	payload              LONGTEXT  NOT NULL     ,
 	exception            LONGTEXT  NOT NULL     ,
 	failed_at            TIMESTAMP  NOT NULL DEFAULT (current_timestamp())    ,
-	CONSTRAINT failed_jobs_uuid_unique UNIQUE ( uuid ) 
+	CONSTRAINT failed_jobs_uuid_unique UNIQUE ( uuid )
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE  TABLE techmavericks_webcup.migrations ( 
+CREATE  TABLE techmavericks_webcup.migrations (
 	id                   INT UNSIGNED NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
 	migration            VARCHAR(255)  NOT NULL     ,
-	batch                INT  NOT NULL     
+	batch                INT  NOT NULL
  ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE  TABLE techmavericks_webcup.mode_paiement ( 
+CREATE  TABLE techmavericks_webcup.mode_paiement (
 	id                   INT  NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
 	nom                  VARCHAR(255)       ,
 	created_at           TIMESTAMP       ,
-	updated_at           TIMESTAMP       
+	updated_at           TIMESTAMP
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE  TABLE techmavericks_webcup.password_resets ( 
+CREATE  TABLE techmavericks_webcup.password_resets (
 	email                VARCHAR(255)  NOT NULL     ,
 	token                VARCHAR(255)  NOT NULL     ,
-	created_at           TIMESTAMP       
+	created_at           TIMESTAMP
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE INDEX password_resets_email_index ON techmavericks_webcup.password_resets ( email );
 
-CREATE  TABLE techmavericks_webcup.pays ( 
+CREATE  TABLE techmavericks_webcup.pays (
 	id                   INT  NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
 	nom                  VARCHAR(255)  NOT NULL     ,
 	created_at           TIMESTAMP       ,
-	updated_at           TIMESTAMP       
+	updated_at           TIMESTAMP
  ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE  TABLE techmavericks_webcup.personal_access_tokens ( 
+CREATE  TABLE techmavericks_webcup.personal_access_tokens (
 	id                   BIGINT UNSIGNED NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
 	tokenable_type       VARCHAR(255)  NOT NULL     ,
 	tokenable_id         BIGINT UNSIGNED NOT NULL     ,
@@ -86,19 +86,19 @@ CREATE  TABLE techmavericks_webcup.personal_access_tokens (
 	last_used_at         TIMESTAMP       ,
 	created_at           TIMESTAMP       ,
 	updated_at           TIMESTAMP       ,
-	CONSTRAINT personal_access_tokens_token_unique UNIQUE ( token ) 
+	CONSTRAINT personal_access_tokens_token_unique UNIQUE ( token )
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE INDEX personal_access_tokens_tokenable_type_tokenable_id_index ON techmavericks_webcup.personal_access_tokens ( tokenable_type, tokenable_id );
 
-CREATE  TABLE techmavericks_webcup.type_transaction ( 
+CREATE  TABLE techmavericks_webcup.type_transaction (
 	id                   INT  NOT NULL     PRIMARY KEY,
 	nom                  VARCHAR(255)       ,
 	created_at           TIMESTAMP       ,
-	updated_at           TIMESTAMP       
+	updated_at           TIMESTAMP
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE  TABLE techmavericks_webcup.users ( 
+CREATE  TABLE techmavericks_webcup.users (
 	id                   BIGINT UNSIGNED NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
 	name                 VARCHAR(255)  NOT NULL     ,
 	email                VARCHAR(255)  NOT NULL     ,
@@ -107,17 +107,17 @@ CREATE  TABLE techmavericks_webcup.users (
 	remember_token       VARCHAR(100)       ,
 	created_at           TIMESTAMP       ,
 	updated_at           TIMESTAMP       ,
-	CONSTRAINT users_email_unique UNIQUE ( email ) 
+	CONSTRAINT users_email_unique UNIQUE ( email )
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE  TABLE techmavericks_webcup.utilisateur ( 
+CREATE  TABLE techmavericks_webcup.utilisateur (
 	id                   INT  NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
 	nom                  VARCHAR(255)       ,
 	mdp                  VARCHAR(255)       ,
-	privilege            VARCHAR(255)       
+	privilege            VARCHAR(255)
  ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE  TABLE techmavericks_webcup.utilisateur_front_office ( 
+CREATE  TABLE techmavericks_webcup.utilisateur_front_office (
 	id                   INT  NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
 	email                VARCHAR(255)  NOT NULL     ,
 	telephone            VARCHAR(20)  NOT NULL     ,
@@ -126,10 +126,10 @@ CREATE  TABLE techmavericks_webcup.utilisateur_front_office (
 	password             VARCHAR(255)  NOT NULL     ,
 	profile              INT  NOT NULL DEFAULT (0)    ,
 	created_at           TIMESTAMP       ,
-	updated_at           TIMESTAMP       
+	updated_at           TIMESTAMP
  ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE  TABLE techmavericks_webcup.ville ( 
+CREATE  TABLE techmavericks_webcup.ville (
 	id                   INT  NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
 	nom                  VARCHAR(255)       ,
 	id_pays              INT       ,
@@ -140,7 +140,7 @@ CREATE  TABLE techmavericks_webcup.ville (
 
 CREATE INDEX id_pays ON techmavericks_webcup.ville ( id_pays );
 
-CREATE  TABLE techmavericks_webcup.produit ( 
+CREATE  TABLE techmavericks_webcup.produit (
 	id                   INT  NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
 	titre                VARCHAR(255)  NOT NULL     ,
 	description          TEXT  NOT NULL     ,
@@ -169,7 +169,7 @@ CREATE INDEX id_categorie ON techmavericks_webcup.produit ( id_categorie );
 
 CREATE INDEX id_utilisateur ON techmavericks_webcup.produit ( id_utilisateur );
 
-CREATE  TABLE techmavericks_webcup.tokens ( 
+CREATE  TABLE techmavericks_webcup.tokens (
 	id                   INT  NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
 	id_user              INT  NOT NULL     ,
 	token                VARCHAR(255)  NOT NULL     ,
@@ -180,7 +180,7 @@ CREATE  TABLE techmavericks_webcup.tokens (
 
 CREATE INDEX id_user ON techmavericks_webcup.tokens ( id_user );
 
-CREATE  TABLE techmavericks_webcup.transaction ( 
+CREATE  TABLE techmavericks_webcup.transaction (
 	id                   INT  NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
 	id_utilisateur       INT       ,
 	id_type              INT       ,
@@ -207,7 +207,7 @@ CREATE INDEX id_utilisateur_tiers ON techmavericks_webcup.transaction ( id_utili
 
 CREATE INDEX id_etat ON techmavericks_webcup.transaction ( id_etat );
 
-CREATE  TABLE techmavericks_webcup.transaction_jeton ( 
+CREATE  TABLE techmavericks_webcup.transaction_jeton (
 	id                   INT  NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
 	id_utilisateur       INT       ,
 	valeur               DOUBLE       ,
@@ -218,7 +218,7 @@ CREATE  TABLE techmavericks_webcup.transaction_jeton (
 
 CREATE INDEX id_utilisateur ON techmavericks_webcup.transaction_jeton ( id_utilisateur );
 
-CREATE  TABLE techmavericks_webcup.photo_produit ( 
+CREATE  TABLE techmavericks_webcup.photo_produit (
 	id                   INT  NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
 	id_produit           INT       ,
 	url                  TEXT  NOT NULL     ,

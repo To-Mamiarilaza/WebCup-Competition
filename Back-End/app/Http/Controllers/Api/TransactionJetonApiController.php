@@ -24,7 +24,7 @@ class TransactionJetonApiController extends Controller
             return response()->json(['message' => 'Jeton acheté.'], 201);
 
         }catch(Exception $ex){
-            return response()->json(['message' => $ex], 201);
+            return response()->json(['message' => 'Erreur lors de l` achat de jeton'], 401);
         }
     }
 }

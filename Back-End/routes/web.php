@@ -31,7 +31,7 @@ Route::post('/categories', [CategorieController::class, 'store']);
 Route::get('/categories/{category}/edit', [CategorieController::class, 'edit'])->name('categories.edit');
 Route::post('/categories/{category}', [CategorieController::class, 'update'])->name('categories.update');
 
-Route::get('/nouvelle_ventes', [VProduitLibCompletController::class, 'index']);
+Route::get('/nouvelle_ventes', [VProduitLibCompletController::class, 'index'])->name('nouvelle_ventes');
 Route::get('/produits/{id}', [VProduitLibCompletController::class, 'details'])->name('produit.details');
 Route::get('/vente-valider/{id}', [ProduitController::class, 'venteValider'])->name('vente.valider');
 Route::get('/vente-refuser/{id}', [ProduitController::class, 'venteRefuser'])->name('vente.refuser');

@@ -19,7 +19,7 @@ class UtilisateurController extends Controller
         $user = Utilisateur::where('nom', $credentials['nom'])->first();
         if ($user && $user->mdp === $credentials['mdp']) {
             $request->session()->put('user_id', $user->id);
-            return redirect()->intended('/categories');
+            return redirect()->intended('/nouvelle_ventes');
         }
         return back()->withErrors(['message' => 'Nom d\'utilisateur ou mot de passe incorrect'])->withInput();
     }

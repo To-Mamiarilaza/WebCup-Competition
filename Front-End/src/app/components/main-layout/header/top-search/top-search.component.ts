@@ -9,7 +9,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 })
 export class TopSearchComponent {
   placeholderDynamique: string = '';
-  placeholderText: string = 'Search your groceries items...';
+  placeholderText: string = 'Tapez le nom de votre produit ici ...';
 
   constructor(private cdr: ChangeDetectorRef) {}
 

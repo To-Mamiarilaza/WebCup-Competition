@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AchatApiController;
+use App\Http\Controllers\Api\AvatarApiController;
 use App\Http\Controllers\Api\TransactionJetonApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Api\PaysApiController;
 use App\Http\Controllers\Api\TransactionApiController;
 use App\Http\Controllers\Api\VenteApiController;
 use App\Http\Controllers\Api\ProduitApiController;
+use App\Http\Controllers\Api\UtilisateurFrontOfficeApiController;
 use App\Http\Controllers\Api\VilleApiController;
 use App\Http\Controllers\Api\VProduitLibCompletApiController;
 use App\Http\Controllers\Api\VVilleLibCompletApiController;
@@ -46,6 +48,10 @@ Route::get('/related-produits/{id_produit}', [VProduitLibCompletApiController::c
 
 Route::get('/mode-paiements', [ModePaiementApiController::class, 'index']);
 Route::get('/devises', [EquivalenceDeviseApiController::class, 'index']);
+Route::get('/avatars', [AvatarApiController::class, 'index']);
+Route::get('/utilisateurs/{id_utilisateur}', [UtilisateurFrontOfficeApiController::class, 'utilisateur']);
+
+
 
 // Front office
 Route::post('/register', [AuthController::class, 'register']);
@@ -63,6 +69,11 @@ Route::middleware(['checkUserToken'])->group(function () {
 
     Route::post('/vente-jetons', [TransactionJetonApiController::class, 'store']); // valeur_devise, montant, id_user
     Route::post('/new-vente',[ProduitApiController::class,'newVente']);
+    Route::post('/change-avatar',[AvatarApiController::class,'changeAvatar']);
+    Route::post('/modifier-profil',[UtilisateurFrontOfficeApiController::class,'modifierProfil']);
+
+    Route::post('/utilisateur', [UtilisateurFrontOfficeApiController::class, 'currentUtilisateur']);
+
     // Vos routes protégées par le token
 });
 

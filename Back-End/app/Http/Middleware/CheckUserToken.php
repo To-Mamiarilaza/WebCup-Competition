@@ -20,11 +20,13 @@ class CheckUserToken
      public function handle(Request $request, Closure $next)
      {
          $token = $request->header('Authorization');
+         Log::info($request->header);
          $token = str_replace('Bearer ', '', $token);
 
          $tokenData = DB::table('tokens')->where('token', $token)->first();
 
          if (!$tokenData) {
+            Log::info('nullos be '.$token.' vide');
              return response()->json(['error' => 'Token invalide'], 401);
          }
 

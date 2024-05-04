@@ -67,6 +67,17 @@ insert into ville(nom, id_pays) values ('Saint-Paul', 3);
 insert into ville(nom, id_pays) values ('Victoria', 4);
 insert into ville(nom, id_pays) values ('Anse Boileau', 4);
 
+create table avatar(
+    id int primary key auto_increment,
+    url text
+);
+
+insert into avatar(url) values('https://robohash.org/4a3d58780f220d8b39a97eb1c9e4140a?set=set3&bgset=&size=200x200');
+insert into avatar(url) values('https://gravatar.com/avatar/96952aff22a59789bbd940bd4f46a26b?s=200&d=robohash&r=g');
+insert into avatar(url) values('https://gravatar.com/avatar/ea83f5388750df3dd53c64c3ed370a26?s=200&d=robohash&r=g');
+insert into avatar(url) values('https://gravatar.com/avatar/e9254a2c866bacfd69c84e2c72195f31?s=200&d=robohash&r=g');
+
+
 CREATE  TABLE utilisateur_front_office ( 
 	id                   INT  NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
 	email                VARCHAR(255)  NOT NULL     ,
@@ -231,3 +242,4 @@ insert into mode_paiement(nom) values('Paypal');
 
 insert into equivalence_devise(nom,valeur) values('Ariary',100);
 insert into equivalence_devise(nom,valeur) values('Euro',0.002);
+

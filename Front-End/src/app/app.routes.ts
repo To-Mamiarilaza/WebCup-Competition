@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from "./pages/error/page-not-found/page-not-fou
 import { ProductSheetComponent } from "./pages/product/product-sheet/product-sheet.component";
 import { TransactionComponent } from "./pages/transaction/transaction.component";
 import { TokenPurchaseComponent } from "./pages/token-purchase/token-purchase.component";
+import { ImageUploadComponent } from "./components/image-upload/image-upload.component";
 
 export const routes: Routes = [
   {
@@ -29,6 +30,11 @@ export const routes: Routes = [
         path: "token-purchase",
         component: TokenPurchaseComponent,
         title: "Achat jetons",
+      },
+      {
+        path: "upload-image",
+        component: ImageUploadComponent,
+        title: "Test upload image",
       },
     ],
   },

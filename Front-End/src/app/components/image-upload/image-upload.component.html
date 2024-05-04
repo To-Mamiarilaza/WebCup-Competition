@@ -1,0 +1,8 @@
+<form (submit)="onSubmit($event)">
+    <input type="file" (change)="onChange($event)" />
+    <button type="submit">Upload</button>
+</form>
+
+<input type="file" (change)="onFileSelected($event)" />
+<input type="number" [value]="uploadProgress" disabled/>
+<progress [value]="uploadProgress" max="100"></progress>

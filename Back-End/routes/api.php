@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CategorieApiController;
 use App\Http\Controllers\Api\ConditionProduitApiController;
+use App\Http\Controllers\Api\EquivalenceDeviseApiController;
+use App\Http\Controllers\Api\ModePaiementApiController;
 use App\Http\Controllers\Api\PaysApiController;
 use App\Http\Controllers\Api\VilleApiController;
 use App\Http\Controllers\Api\VProduitLibCompletApiController;
@@ -33,12 +35,10 @@ Route::get('/v-produit-lib-complet', [VProduitLibCompletApiController::class, 'i
 Route::get('/v-ville-lib-complet', [VVilleLibCompletApiController::class, 'index']);
 Route::get('/current-user-produits', [VProduitLibCompletApiController::class, 'currentUserProduits']);
 Route::get('/recherche-produits', [VProduitLibCompletApiController::class, 'rechercheProduits']);
-
 Route::get('/produits/{id}', [VProduitLibCompletApiController::class, 'produit']);
 Route::get('/related-produits/{id_produit}', [VProduitLibCompletApiController::class, 'relatedProduits']);
-
-
-
+Route::get('/mode-paiements', [ModePaiementApiController::class, 'index']);
+Route::get('/devises', [EquivalenceDeviseApiController::class, 'index']);
 
 
 

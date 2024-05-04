@@ -38,6 +38,13 @@ Route::get('/v-ville-lib-complet', [VVilleLibCompletApiController::class, 'index
 Route::get('/current-user-produits', [VProduitLibCompletApiController::class, 'currentUserProduits']);
 Route::get('/recherche-produits', [VProduitLibCompletApiController::class, 'rechercheProduits']);
 
+Route::get('/produits/{id}', [VProduitLibCompletApiController::class, 'produit']);
+Route::get('/related-produits/{id_produit}', [VProduitLibCompletApiController::class, 'relatedProduits']);
+
+
+
+
+
 
 
 

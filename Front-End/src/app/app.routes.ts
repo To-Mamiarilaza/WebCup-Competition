@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from "./pages/error/page-not-found/page-not-fou
 import { ProductSheetComponent } from "./pages/product/product-sheet/product-sheet.component";
 import { TransactionComponent } from "./pages/transaction/transaction.component";
 import { TokenPurchaseComponent } from "./pages/token-purchase/token-purchase.component";
+import { authGuard } from "./guard/auth.guard";
 
 export const routes: Routes = [
   {
@@ -36,8 +37,18 @@ export const routes: Routes = [
     path: "page",
     component: FullPageLayoutComponent,
     children: [
-      { path: "sign-in", component: SignInComponent, title: "Se connecter" },
-      { path: "sign-up", component: SignUpComponent, title: "S'inscrire" },
+      {
+        path: "sign-in",
+        component: SignInComponent,
+        title: "Se connecter",
+        canActivate: [authGuard],
+      },
+      {
+        path: "sign-up",
+        component: SignUpComponent,
+        title: "S'inscrire",
+        canActivate: [authGuard],
+      },
     ],
   },
   { path: "", redirectTo: "/main", pathMatch: "full" },

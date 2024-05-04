@@ -5,12 +5,20 @@ import { FullPageLayoutComponent } from "./components/full-page-layout/full-page
 import { SignInComponent } from "./pages/auth/sign-in/sign-in.component";
 import { SignUpComponent } from "./pages/auth/sign-up/sign-up.component";
 import { PageNotFoundComponent } from "./pages/error/page-not-found/page-not-found.component";
+import { ProductSheetComponent } from "./pages/product/product-sheet/product-sheet.component";
 
 export const routes: Routes = [
   {
     path: "main",
     component: MainLayoutComponent,
-    children: [{ path: "", component: HomeComponent, title: "Accueil" }],
+    children: [
+      { path: "", component: HomeComponent, title: "Accueil" },
+      {
+        path: "product/:productId",
+        component: ProductSheetComponent,
+        title: "Fiche produit",
+      },
+    ],
   },
   {
     path: "page",

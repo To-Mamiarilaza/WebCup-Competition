@@ -1,0 +1,69 @@
+<main class="container">
+  <div class="row">
+    <section class="col-md-6">
+      <img class="img-fluid" src="{{ imagesPath[0] }}" alt="" />
+      <aside class="d-flex gap-1">
+        <span class="paginate-img" *ngFor="let imagePath of imagesPath | slice:1; let i = index;">
+            <img class="img-fluid" src="{{ imagePath }}" alt="" />
+        </span>
+      </aside>
+    </section>
+    <article class="col-md-6 mt-3 mt-md-0">
+      <h2>Lunette de soleil</h2>
+      <p>22Kc</p>
+      <p>
+        <small>Par {{ by }}</small> <span class="ms-3">{{ contact }}</span>
+      </p>
+      <hr class="my-1" />
+      <div>
+        <h1>Description</h1>
+        <p>
+          {{ description }}
+        </p>
+      </div>
+      <div class="mt-2">
+        <h1>Catégorie</h1>
+        <p>{{ category }}</p>
+      </div>
+      <hr class="my-1" />
+      <div class="d-flex justify-content-between">
+        <p>Livraison possible</p>
+        <p>Antananarivo</p>
+      </div>
+      <button class="btn btn-secondary ms-auto">Acheter</button>
+    </article>
+  </div>
+  <div class="suggestion mt-5">
+    <h1>Produits associés</h1>
+    <section class="row justify-content-center">
+      <app-item
+        class="col-md-3 mt-2 mt-md-0"
+        title="Casquette"
+        imagePath="assets/images/hat.jpg"
+        description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+        price="22k coins"
+      ></app-item>
+      <app-item
+        class="col-md-3 mt-2 mt-md-0"
+        title="Sandales"
+        imagePath="assets/images/sandals.jpg"
+        description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+        price="22k coins"
+      ></app-item>
+      <app-item
+        class="col-md-3 mt-2 mt-md-0"
+        title="Chaussure"
+        imagePath="assets/images/shoes.jpg"
+        description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+        price="22k coins"
+      ></app-item>
+      <app-item
+        class="col-md-3 mt-2 mt-md-0"
+        title="T-Shirt"
+        imagePath="assets/images/t-shirt.jpg"
+        description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+        price="22k coins"
+      ></app-item>
+    </section>
+  </div>
+</main>

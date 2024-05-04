@@ -231,5 +231,3 @@ insert into mode_paiement(nom) values('Paypal');
 
 insert into equivalence_devise(nom,valeur) values('Ariary',100);
 insert into equivalence_devise(nom,valeur) values('Euro',0.002);
-
-

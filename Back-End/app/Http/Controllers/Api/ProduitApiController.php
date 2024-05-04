@@ -4,13 +4,18 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Produit;
+use App\Models\PhotoProduit;
+use Illuminate\Support\Facades\Validator;
+use Exception;
+
 use Illuminate\Http\Request;
 
 class ProduitApiController extends Controller
 {
+
     public function newVente(Request $request)
     {
-        $validatedData = $request->validate([
+        $rules = [
             'nom_produit' => 'required|string',
             'prix' => 'required|numeric',
             'id_categorie' => 'required|integer',
@@ -18,31 +23,31 @@ class ProduitApiController extends Controller
             'description' => 'required|string',
             'pays' => 'required|integer',
             'ville' => 'required|integer',
-            'images' => 'nullable|array',
+            'images' => 'required|array',
             'images.*' => 'url',
-        ]);
-        $vente = new Produit();
-        $vente->titre = $validatedData['nom_produit'];
-        $vente->prix = $validatedData['prix'];
-        $vente->id_categorie = $validatedData['id_categorie'];
-        $vente->id_condition = $validatedData['condition'];
-        $vente->description = $validatedData['description'];
-        $vente->id_localisation = $validatedData['ville'];
-
-        $vente->id_etat = 0;
-        
-        // Save the vente instance to the database
-        $vente->save();
-
-        // Handle images
-        if (isset($validatedData['images'])) {
-            // Attach images to the vente instance
-            $vente->images()->createMany(array_map(function($url) {
-                return ['url' => $url];
-            }, $validatedData['images']));
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
         }
-
-        // Return a success response
+        $vente = new Produit();
+        $vente->titre = $request->nom_produit;
+        $vente->prix = $request->prix;
+        $vente->id_categorie = $request->id_categorie;
+        $vente->id_condition = $request->condition;
+        $vente->description = $request->description;
+        $vente->id_localisation = $request->ville;
+        $vente->id_etat = 0;
+        $vente->id_utilisateur = $request->id_user;
+        $vente->save();
+        if ($request->has('images')) {
+            foreach ($request->images as $url) {
+                $photoProduit = new PhotoProduit();
+                $photoProduit->id_produit = $vente->id;
+                $photoProduit->url = $url;
+                $photoProduit->save();
+            }
+        }
         return response()->json(['message' => 'Vente created successfully'], 201);
-    }   
+    }
 }

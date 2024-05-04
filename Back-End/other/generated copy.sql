@@ -1,5 +1,3 @@
-CREATE SCHEMA techmavericks_webcup;
-
 CREATE  TABLE techmavericks_webcup.categorie ( 
 	id                   INT  NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
 	nom                  VARCHAR(255)  NOT NULL     ,

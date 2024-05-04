@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\PaysApiController;
 use App\Http\Controllers\Api\VilleApiController;
 use App\Http\Controllers\Api\VProduitLibCompletApiController;
 use App\Http\Controllers\Api\VVilleLibCompletApiController;
+use App\Http\Controllers\Authentification\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,5 +38,16 @@ Route::get('/recherche-produits', [VProduitLibCompletApiController::class, 'rech
 
 
 
+
+
+
+// Front office
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::middleware(['checkUserToken'])->group(function () {
+    Route::post('/test', [AuthController::class, 'test']);
+    // Vos routes protégées par le token
+});
 
 

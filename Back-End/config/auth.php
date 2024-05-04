@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'utilisateur_front_office' => [
+            'driver' => 'session',
+            'provider' => 'utilisateur_front_office',
+        ],
     ],
 
     /*
@@ -63,6 +67,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'utilisateur_front_office' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\UtilisateurFrontOffice::class, // Utilise la table employe pour l'authentification via l'API
         ],
 
         // 'users' => [

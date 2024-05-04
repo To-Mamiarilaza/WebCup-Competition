@@ -7,7 +7,7 @@ use App\Models\Utilisateur;
 
 class UtilisateurController extends Controller
 {
-    
+
     public function showLoginForm(Request $request)
     {
         $request->session()->forget('user_id');

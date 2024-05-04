@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from "./pages/error/page-not-found/page-not-fou
 import { ProductSheetComponent } from "./pages/product/product-sheet/product-sheet.component";
 import { TransactionComponent } from "./pages/transaction/transaction.component";
 import { TokenPurchaseComponent } from "./pages/token-purchase/token-purchase.component";
+import { ImageUploadComponent } from "./components/image-upload/image-upload.component";
 import { authGuard } from "./guard/auth.guard";
 import { ListProduitComponent } from "./pages/list-produit/list-produit.component";
 
@@ -36,6 +37,11 @@ export const routes: Routes = [
         path: "list-produit",
         component: ListProduitComponent,
         title: "Listes des produits",
+      },
+      {
+        path: "upload-image",
+        component: ImageUploadComponent,
+        title: "Test upload image",
       },
     ],
   },

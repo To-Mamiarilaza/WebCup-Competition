@@ -9,4 +9,5 @@ import { Component, Input } from "@angular/core";
 })
 export class CategorieComponent {
   @Input() name: string = "";
+  @Input() url: string = "";
 }

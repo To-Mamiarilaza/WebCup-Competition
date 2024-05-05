@@ -15,4 +15,5 @@ export class Product {
   ville: string = "";
   id_pays: number | null = null;
   pays: string = "";
+  photo_url: string = "";
 }

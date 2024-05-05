@@ -1,36 +1,29 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, catchError, tap, throwError } from "rxjs";
-import { AuthService } from "../auth/auth.service";
 import { env } from "../../environments/env";
-import { Router } from "@angular/router";
+import { Product } from "../../model/Product";
+import { Category } from "../../model/Category";
 
 @Injectable({
   providedIn: "root",
 })
-export class RegisterService {
+export class HomeService {
   private loadingSubject = new BehaviorSubject<boolean>(false);
   public loading$ = this.loadingSubject.asObservable();
   private errorSubject = new BehaviorSubject<string | null>(null);
   public error$ = this.errorSubject.asObservable();
 
-  constructor(
-    public http: HttpClient,
-    public authService: AuthService,
-    private route: Router
-  ) {}
+  constructor(public http: HttpClient) {}
 
-  signUp(newUser: {
-    email: string;
-    password: string;
-    telephone: string;
-    avatar: string;
-    name: string;
-    profile: number;
-  }) {
+  getData() {
     this.loadingSubject.next(true);
+    let data: { products: Product[]; categories: Category[] } = {
+      products: [],
+      categories: [],
+    };
     this.http
-      .post(`${env.baseUrl}/api/register`, newUser)
+      .get(`${env.baseUrl}/api/acceuil`)
       .pipe(
         tap(() => this.loadingSubject.next(false)),
         catchError((err) => {
@@ -42,7 +35,8 @@ export class RegisterService {
         })
       )
       .subscribe((response: any) => {
-        this.route.navigate(["/page/sign-in"]);
+        data = response;
       });
+    return data;
   }
 }

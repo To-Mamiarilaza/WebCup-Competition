@@ -9,10 +9,7 @@
     
     <div class="container">
         <div class="row collections mt-5">
-            <app-categorie class="col-6 col-sm-6 col-md-3 mb-3"></app-categorie>
-            <app-categorie class="col-6 col-sm-6 col-md-3 mb-3"></app-categorie>
-            <app-categorie class="col-6 col-sm-6 col-md-3 mb-3"></app-categorie>
-            <app-categorie class="col-6 col-sm-6 col-md-3 mb-3"></app-categorie>
+            <app-categorie *ngFor="let category of categories" name="{{category.nom}}" class="col-6 col-sm-6 col-md-3 mb-3"></app-categorie>
         </div>
     </div>
 
@@ -30,10 +27,7 @@
                     </button>
                 </div>
 
-                <app-produit class="col-6 col-sm-6 col-md-3 mb-3"></app-produit>
-                <app-produit class="col-6 col-sm-6 col-md-3 mb-3"></app-produit>
-                <app-produit class="col-6 col-sm-6 col-md-3 mb-3"></app-produit>
-                <app-produit class="col-6 col-sm-6 col-md-3 mb-3"></app-produit>
+                <app-produit *ngFor="let product of products" imagePath="" categorie="{{product.categorie}}" [price]="product.prix" class="col-6 col-sm-6 col-md-3 mb-3"></app-produit>
             </div>
         </div>
     </div>

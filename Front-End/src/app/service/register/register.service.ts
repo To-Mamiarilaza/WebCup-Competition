@@ -2,7 +2,6 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, catchError, tap, throwError } from "rxjs";
 import { AuthService } from "../auth/auth.service";
-import { File } from "buffer";
 import { env } from "../../environments/env";
 import { Router } from "@angular/router";
 

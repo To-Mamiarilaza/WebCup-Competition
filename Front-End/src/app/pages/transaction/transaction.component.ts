@@ -31,7 +31,6 @@ export class TransactionComponent  implements OnInit{
   updateUserTransaction(): void {
     this.http.get<any>(env.baseUrl + "/transactions", { headers: this.headers})
     .subscribe(data => {
-      console.log(data);
       this.userTansactions = data.data;
       this.current_page = data.current_page
       this.page_number = data.last_page

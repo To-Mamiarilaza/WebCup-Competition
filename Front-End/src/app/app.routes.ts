@@ -10,6 +10,10 @@ import { TransactionComponent } from "./pages/transaction/transaction.component"
 import { TokenPurchaseComponent } from "./pages/token-purchase/token-purchase.component";
 import { ImageUploadComponent } from "./components/image-upload/image-upload.component";
 import { authGuard } from "./guard/auth.guard";
+import { ListProduitComponent } from "./pages/list-produit/list-produit.component";
+import { VenteHistoriqueComponent } from "./pages/vente-historique/vente-historique.component";
+import { NewVenteComponent } from "./pages/new-vente/new-vente.component";
+import { PhotoInsertionComponent } from "./pages/photo-insertion/photo-insertion.component";
 
 export const routes: Routes = [
   {
@@ -33,9 +37,29 @@ export const routes: Routes = [
         title: "Achat jetons",
       },
       {
+        path: "list-produit",
+        component: ListProduitComponent,
+        title: "Listes des produits",
+      },
+      {
         path: "upload-image",
         component: ImageUploadComponent,
         title: "Test upload image",
+      },
+      {
+        path: "historique-vente",
+        component: VenteHistoriqueComponent,
+        title: "Historique de vente",
+      },
+      {
+        path: "new-vente",
+        component: NewVenteComponent,
+        title: "Nouvelle vente",
+      },
+      {
+        path: "photo-insertion",
+        component: PhotoInsertionComponent,
+        title: "Nouvelle vente",
       },
     ],
   },
@@ -47,11 +71,13 @@ export const routes: Routes = [
         path: "sign-in",
         component: SignInComponent,
         title: "Se connecter",
+        canActivate: [authGuard],
       },
       {
         path: "sign-up",
         component: SignUpComponent,
         title: "S'inscrire",
+        canActivate: [authGuard],
       },
     ],
   },

@@ -1,1 +1,60 @@
-<p>sign-up works!</p>
+<section class="vh-100 d-flex justify-md-content-center align-items-md-center">
+    <div class="container h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-6">
+                <img src="assets/kenough.png" class="img-fluid" alt="Ken background" />
+            </div>
+            <div class="col-md-6">
+                <p class="m-0 title barbie text-center">I am Kenough</p>
+
+                <div class="form-outline mb-2">
+                    <label class="form-label" for="avatar">Choisissez un avatar</label>
+                    <select id="avatar" class="form-select" [(ngModel)]="avatar">
+                        <option value="assets/ken.png" style="background-image:url('assets/ken.png');">Ken</option>
+                    </select>
+                </div>
+                <div class="form-outline mb-2">
+                    <label class="form-label" for="username">Pseudo Ken</label>
+                    <input type="text" id="username" class="form-control" [(ngModel)]="username" placeholder="Keny203" />
+                </div>
+
+                <div class="form-outline mb-2">
+                    <label class="form-label" for="email">Adresse email</label>
+                    <input type="email" id="email" class="form-control" [(ngModel)]="email"
+                        placeholder="Entrer une adresse email valid" />
+                </div>
+
+                <div class="form-outline mb-2">
+                    <label class="form-label" for="password">Mot de passe</label>
+                    <input type="password" id="password" class="form-control" [(ngModel)]="password"
+                        placeholder="Entrer le mot de passe" />
+                </div>
+
+                <div class="form-outline mb-2">
+                    <label class="form-label" for="contact">Contact</label>
+                    <input type="text" id="contact" class="form-control" [(ngModel)]="contact"
+                        placeholder="+261 32" />
+                </div>
+
+                <div class="text-center text-lg-start mt-4 pt-2">
+                    <button type="button" class="btn btn-outline-primary btn-lg w-100"
+                        style="padding-left: 2.5rem; padding-right: 2.5rem" (click)="signUp()">
+                        <span *ngIf="loading$ | async; else text" class="spinner-border text-primary"
+                            role="status"></span>
+                        <ng-template #text>
+                            <p class="m-0 barbie">Confirmer</p>
+                        </ng-template>
+                    </button>
+
+                    <div class="mt-2 alert alert-danger" *ngIf="error$ | async as error" role="alert">
+                        {{ error }}
+                    </div>
+                    <p class="small fw-bold mt-3 pt-1 mb-3">
+                        Déjà du royaume de Kendom ?
+                        <a [routerLink]="['/page/sign-in']" class="link-danger">Par içi le portail</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

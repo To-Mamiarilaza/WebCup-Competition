@@ -26,6 +26,7 @@
     "bootstrap-icons": "^1.11.3",
     "express": "^4.18.2",
     "firebase": "^10.11.1",
+    "ngx-cookie-service": "^17.1.0",
     "ngx-image-compress": "^15.1.6",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

@@ -1,0 +1,19 @@
+.semi-banner {
+    height: 140px;
+    background-color: var(--special-color);
+    color: white;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    p {
+        color: var(--bg-white-color);
+    }
+}
+
+
+.new-vente-form {
+    color: black;
+}

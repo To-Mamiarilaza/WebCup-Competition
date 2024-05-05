@@ -75,14 +75,16 @@
                 margin-top: 1.2rem;
             }
 
-            button {
+            button, a {
                 padding: 1rem 2rem;
                 color: white;
+                display: inline-block;
                 font-size: var(--fs-paragraph);
                 background-color: var(--black-color);
                 text-transform: uppercase;
                 letter-spacing: 4px;
                 border: none;
+                text-decoration: none;
                 margin-top: 1.5rem;
                 transition: .3s;
 
@@ -105,7 +107,7 @@
                     line-height: 50px;
                 }
 
-                button {
+                button, a {
                     font-size: var(--fs-button);
                 }
             }
@@ -123,7 +125,7 @@
                     line-height: 30px;
                 }
 
-                button {
+                button, a {
                     font-size: 14px;
                     margin-top: 1rem;
                 }
@@ -142,7 +144,7 @@
                     line-height: 20px;
                 }
 
-                button {
+                button, a {
                     font-size: 10px;
                     margin-top: .2rem;
                     padding: 10px;

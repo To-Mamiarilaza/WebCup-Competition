@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\TransactionJeton;
 use Exception;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 
 class TransactionJetonApiController extends Controller
 {
@@ -15,7 +15,7 @@ class TransactionJetonApiController extends Controller
         try{
             $valeurDevise = $request->valeur_devise;
             $montant = $request->montant;
-            $valeur = $montant / $valeurDevise;
+            $valeur = $montant * $valeurDevise;
             $user = new TransactionJeton([
                 'id_utilisateur' => $request->id_user,
                 'valeur' => $valeur,
@@ -25,6 +25,17 @@ class TransactionJetonApiController extends Controller
 
         }catch(Exception $ex){
             return response()->json(['message' => 'Erreur lors de l` achat de jeton'], 401);
+        }
+    }
+
+    public function getUsersJeton(Request $request)
+    {
+        try{
+            $id_user = $request->id_user;
+            $reste = DB::table('v_reste_jeton_par_utilisateur')->where('id', $id_user)->first();
+            return response()->json($reste,200);
+        }catch(Exception $ex){
+            return response()->json(['message'=> 'Erreur lors de la récupération du jeton de l\' utilisatur'], 500);
         }
     }
 }

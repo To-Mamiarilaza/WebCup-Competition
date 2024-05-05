@@ -66,6 +66,7 @@ Route::middleware(['checkUserToken'])->group(function () {
     Route::get('/transactions', [TransactionApiController::class, 'userTransation']);
     Route::get('/historique_ventes', [VenteApiController::class, 'historiqueVente']);
     Route::get('/annulation_vente', [VenteApiController::class, 'annulerVente']);
+    Route::get('/jeton-utilisateur', [TransactionJetonApiController::class, 'getUsersJeton']);
 
     Route::post('/vente-jetons', [TransactionJetonApiController::class, 'store']); // valeur_devise, montant, id_user
     Route::post('/new-vente',[ProduitApiController::class,'newVente']);

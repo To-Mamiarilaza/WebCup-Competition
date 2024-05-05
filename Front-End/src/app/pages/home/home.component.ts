@@ -27,7 +27,7 @@ export class HomeComponent {
 
   ngOnInit(): void {
     const data = this.homeService.getData();
-    this.products = data.products;
+    this.products = data.produits;
     this.categories = data.categories;
   }
 }

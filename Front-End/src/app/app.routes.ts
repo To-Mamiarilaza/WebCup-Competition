@@ -49,18 +49,18 @@ export const routes: Routes = [
       {
         path: "historique-vente",
         component: VenteHistoriqueComponent,
-        title: "Historique de vente"
+        title: "Historique de vente",
       },
       {
         path: "new-vente",
         component: NewVenteComponent,
-        title: "Nouvelle vente"
+        title: "Nouvelle vente",
       },
       {
         path: "photo-insertion",
         component: PhotoInsertionComponent,
-        title: "Nouvelle vente"
-      }
+        title: "Nouvelle vente",
+      },
     ],
   },
   {
@@ -71,11 +71,13 @@ export const routes: Routes = [
         path: "sign-in",
         component: SignInComponent,
         title: "Se connecter",
+        canActivate: [authGuard],
       },
       {
         path: "sign-up",
         component: SignUpComponent,
         title: "S'inscrire",
+        canActivate: [authGuard],
       },
     ],
   },

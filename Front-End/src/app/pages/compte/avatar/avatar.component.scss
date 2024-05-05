@@ -1,0 +1,31 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100px;
+    align-items: center;
+    background-color: transparent;
+    cursor: pointer;
+    pointer-events: all;
+    border: solid 1px var(--border-color);
+    border-radius: 10px;
+    transition: .3s;
+
+    &:hover {
+        border-color: var(--special-color);
+    }
+
+    &:focus {
+        border-color: var(--special-color);
+    }
+
+    img {
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+    }
+
+    div {
+        text-align: center;
+    }
+}

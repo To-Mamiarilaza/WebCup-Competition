@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { env } from "../../environments/env";
-import { BehaviorSubject, catchError, tap, throwError } from "rxjs";
+import { BehaviorSubject, catchError, Observable, tap, throwError } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -14,11 +14,25 @@ export class ListProduitService {
 
   constructor(public http: HttpClient) {}
 
-  getAll() {
-    let resp: any;
+  getAll(): Observable<any> {
+    this.loadingSubject.next(true);
+    return this.http.post(`${env.baseUrl}/api/list-produit-init`, {}).pipe(
+      tap(() => this.loadingSubject.next(false)),
+      catchError((err) => {
+        this.loadingSubject.next(false);
+        this.errorSubject.next(err.error.message);
+        return throwError(() => {
+          return err;
+        });
+      })
+    );
+  }
+
+  page(url: string) {
+    let resp: any[] = [];
     this.loadingSubject.next(true);
     this.http
-      .get(`${env.baseUrl}/api/list-produit-init`)
+      .post(url, {})
       .pipe(
         tap(() => this.loadingSubject.next(false)),
         catchError((err) => {
@@ -35,11 +49,11 @@ export class ListProduitService {
     return resp;
   }
 
-  page(url: string) {
-    let resp: any[] = [];
+  filter(body: any) {
+    let resp: any;
     this.loadingSubject.next(true);
     this.http
-      .get(url)
+      .post(`${env.baseUrl}/api/list-produit-filtre`, body)
       .pipe(
         tap(() => this.loadingSubject.next(false)),
         catchError((err) => {

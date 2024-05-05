@@ -10,6 +10,6 @@ import { Component, Input } from "@angular/core";
 export class ProduitComponent {
   @Input() imagePath: string = "";
   @Input() utilisateur: string = "";
-  @Input() categorie: string = "";
+  @Input() titre: string = "";
   @Input() price: number = 0;
 }

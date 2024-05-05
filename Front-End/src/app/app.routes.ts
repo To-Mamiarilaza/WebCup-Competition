@@ -11,6 +11,7 @@ import { TokenPurchaseComponent } from "./pages/token-purchase/token-purchase.co
 import { ImageUploadComponent } from "./components/image-upload/image-upload.component";
 import { authGuard } from "./guard/auth.guard";
 import { ListProduitComponent } from "./pages/list-produit/list-produit.component";
+import { VenteHistoriqueComponent } from "./pages/vente-historique/vente-historique.component";
 
 export const routes: Routes = [
   {
@@ -43,6 +44,11 @@ export const routes: Routes = [
         component: ImageUploadComponent,
         title: "Test upload image",
       },
+      {
+        path: "historique-vente",
+        component: VenteHistoriqueComponent,
+        title: "Historique de vente"
+      }
     ],
   },
   {

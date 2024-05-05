@@ -1,0 +1,49 @@
+<section class="semi-banner">
+    <p class="mb-0">Mes ventes</p>
+    <h3 class="mt-1">Vendez vos produits facilement</h3>
+</section>
+  
+  <!-- Confirmation modal -->
+  <div class="modal confirmation fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Voulez vous vraiment annuler votre vente ?</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row align-items-center">
+            <div class="col-md-4">
+                <img src="assets/images/1.jpg" alt="">
+            </div>
+            <div class="col-md-8 desc text-center">
+                <h4>Vêtements de soirée</h4>
+                <p>223 Kc</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
+          <button type="button" class="btn btn-danger">Annuler vente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<section class="ventes py-3">
+    <div class="container">
+        <div class="d-flex flex-row-reverse mt-3">
+            <button class="new-vente-btn"><i class="bi bi-plus me-3"></i>Nouvelle vente</button>
+        </div>
+        <div class="title mt-3">
+            <h3>Vos historiques de ventes</h3>
+        </div>
+        <div class="historiques row mt-4">
+            <app-historique class="col-6 col-sm-6 col-md-3 mb-3"></app-historique>
+            <app-historique class="col-6 col-sm-6 col-md-3 mb-3"></app-historique>
+            <app-historique class="col-6 col-sm-6 col-md-3 mb-3"></app-historique>
+            <app-historique class="col-6 col-sm-6 col-md-3 mb-3"></app-historique>
+        </div>
+    </div>
+</section>
+

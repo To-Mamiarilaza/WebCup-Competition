@@ -1,0 +1,34 @@
+.not-found {
+    img {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        z-index: -4;
+        
+    }
+    
+    .text-error {
+        position: fixed;
+        
+        text-align: center;
+        top: 30vh;
+        right: 0;
+        left: 0;
+        
+        h1 {
+            color: white;
+            font-size: 80px;
+            font-weight: 700;
+        }
+
+        p {
+            color: white;
+            font-size: 40px;
+            font-weight: 600;
+        }
+
+        a {
+            font-size: 30px;
+        }
+    }
+}

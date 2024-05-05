@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="row mt-4">
-                    <app-produit *ngFor="let item of produits" categorie="{{item.categorie}}" imagePath="{{item.photo_url}}" [price]="item.prix" utilisateur="{{item.utilisateur}}" class="col-6 col-sm-6 col-md-4 mb-3"></app-produit>
+                    <app-produit *ngFor="let item of produits" titre="{{item.titre}}" imagePath="{{item.photo_url}}" [price]="item.prix" utilisateur="{{item.utilisateur}}" class="col-6 col-sm-6 col-md-4 mb-3"></app-produit>
 
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
@@ -23,46 +23,28 @@
             <div class="col-md-4">
                 <div class="filter">
                     <h4>Filtre</h4>
-                    <form class="form mt-3">
+                    <section class="form mt-3">
                         <div class="mb-3">
                             <label for="" class="form-label text-black mb-3"> <i
                                     class="bi bi-currency-exchange me-3"></i> Filtrer par prix</label>
                             <div class="row">
                                 <div class="col-md-6 mb-sm-3 mb-md-0">
-                                    <input type="text" class="form-control" placeholder="Min">
+                                    <input type="text" class="form-control" placeholder="Min" [(ngModel)]="min_price">
                                 </div>
                                 <div class="col-md-6 mb-sm-3 mb-md-0">
-                                    <input type="text" class="form-control" placeholder="Max">
+                                    <input type="text" class="form-control" placeholder="Max" [(ngModel)]="max_price">
                                 </div>
                             </div>
                         </div>
                         <hr>
                         <div class="mb-3">
-                            <label for="" class="form-label text-black mb-3"><i
+                            <label class="form-label text-black mb-3"><i
                                     class="bi bi-stack me-3"></i>Catégorie</label>
                             <div class="row ps-2">
-                                <div class="form-check col-md-6">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Lunette
-                                    </label>
-                                </div>
-                                <div class="form-check col-md-6">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Vêtements
-                                    </label>
-                                </div>
-                                <div class="form-check col-md-6">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Meuble
-                                    </label>
-                                </div>
-                                <div class="form-check col-md-6">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Décoration
+                                <div class="form-check col-md-6" *ngFor="let categ of categories; index as i">
+                                    <input [(ngModel)]="categories_id[i]" class="form-check-input" type="checkbox" id="flexCheckDefault{{i}}">
+                                    <label class="form-check-label" for="flexCheckDefault{{i}}">
+                                        {{categ.nom}}
                                     </label>
                                 </div>
                             </div>
@@ -72,16 +54,10 @@
                             <label for="" class="form-label text-black mb-3"><i
                                     class="bi bi-star me-3"></i>Condition</label>
                             <div class="row ps-2">
-                                <div class="form-check col-md-6">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Produit neuf
-                                    </label>
-                                </div>
-                                <div class="form-check col-md-6">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Produit usagé
+                                <div class="form-check col-md-6" *ngFor="let condition of conditionProduits; index as i">
+                                    <input class="form-check-input" [(ngModel)]="conditions_id[i]" type="checkbox" id="flexCheckDefault{{i}}">
+                                    <label class="form-check-label" for="flexCheckDefault{{i}}">
+                                        {{condition.nom}}
                                     </label>
                                 </div>
                             </div>
@@ -91,25 +67,21 @@
                             <label for="" class="form-label text-black mb-3"><i
                                     class="bi bi-geo-alt-fill me-3"></i>Lieu</label>
                             <div class="col-md-6 mb-sm-3 mb-md-0">
-                                <select name="" class="form-select" id="">
-                                    <option value=""></option>
-                                    <option value="">Madagascar</option>
-                                    <option value="">France</option>
+                                <select [(ngModel)]="pays_id" class="form-select" id="">
+                                    <option value="{{pay.id}}" *ngFor="let pay of pays">{{pay.nom}}</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <select name="" class="form-select" id="">
-                                    <option value=""></option>
-                                    <option value="">Antananarivo</option>
-                                    <option value="">France</option>
+                                <select [(ngModel)]="ville_id" class="form-select" id="">
+                                    <option value="{{ville.id}}" *ngFor="let ville of villes">{{ ville.nom }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="mt-4 d-flex">
                             <button class="px-3">Annuler</button>
-                            <button class="ms-5 px-3 text-green">Valider</button>
+                            <button class="ms-5 px-3 text-green" (click)="filter()">Valider</button>
                         </div>
-                    </form>
+                    </section>
                 </div>
             </div>
         </div>

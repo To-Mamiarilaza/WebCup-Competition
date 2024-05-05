@@ -6,6 +6,7 @@ import { BanniereComponent } from "../../components/main-layout/header/banniere/
 import { Product } from "../../model/Product";
 import { Category } from "../../model/Category";
 import { HomeService } from "../../service/home/home.service";
+import { response } from "express";
 
 @Component({
   selector: "app-home",
@@ -26,8 +27,11 @@ export class HomeComponent {
   constructor(public homeService: HomeService) {}
 
   ngOnInit(): void {
-    const data = this.homeService.getData();
-    this.products = data.produits;
-    this.categories = data.categories;
+    this.homeService.getData().subscribe((response) => {
+      const data = response;
+      this.products = data.produits;
+      this.categories = data.categories;
+      console.log(this.products);
+    });
   }
 }

@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: 'app-categorie',
+  selector: "app-categorie",
   standalone: true,
   imports: [],
-  templateUrl: './categorie.component.html',
-  styleUrl: './categorie.component.scss'
+  templateUrl: "./categorie.component.html",
+  styleUrl: "./categorie.component.scss",
 })
 export class CategorieComponent {
-
+  @Input() name: string = "";
 }

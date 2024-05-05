@@ -14,6 +14,7 @@ import { ListProduitComponent } from "./pages/list-produit/list-produit.componen
 import { VenteHistoriqueComponent } from "./pages/vente-historique/vente-historique.component";
 import { NewVenteComponent } from "./pages/new-vente/new-vente.component";
 import { PhotoInsertionComponent } from "./pages/photo-insertion/photo-insertion.component";
+import { CompteComponent } from "./pages/compte/compte.component";
 
 export const routes: Routes = [
   {
@@ -59,8 +60,13 @@ export const routes: Routes = [
       {
         path: "photo-insertion",
         component: PhotoInsertionComponent,
-        title: "Nouvelle vente",
+        title: "Nouvelle vente"
       },
+      {
+        path: "compte",
+        component: CompteComponent,
+        title: "Mon compte"
+      }
     ],
   },
   {

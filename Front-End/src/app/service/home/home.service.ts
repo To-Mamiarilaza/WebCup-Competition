@@ -18,8 +18,8 @@ export class HomeService {
 
   getData() {
     this.loadingSubject.next(true);
-    let data: { products: Product[]; categories: Category[] } = {
-      products: [],
+    let data: { produits: Product[]; categories: Category[] } = {
+      produits: [],
       categories: [],
     };
     this.http

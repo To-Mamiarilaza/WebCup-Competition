@@ -1,0 +1,46 @@
+.semi-banner {
+    height: 140px;
+    background-color: var(--special-color);
+    color: white;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    p {
+        color: var(--bg-white-color);
+    }
+
+}
+
+.ventes {
+    display: block;
+    background-color: #f6f6f6;
+
+    .new-vente-btn {
+        padding: .5rem 2rem;
+        border: none;
+        background-color: black;
+        color: white;
+        font-size: 18px;
+        transition: .2s;
+
+        &:hover {
+            background-color: var(--special-dark-color);
+        }
+
+        i {
+            font-size: 20px;
+        }
+    }
+
+}
+
+.confirmation {
+    .modal-body {
+        img {
+            width: 100%;
+        }
+    }
+}

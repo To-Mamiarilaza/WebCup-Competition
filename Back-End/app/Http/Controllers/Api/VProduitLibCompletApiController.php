@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\VProduitLibComplet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 use Exception;
 
 class VProduitLibCompletApiController extends Controller
@@ -48,7 +50,8 @@ class VProduitLibCompletApiController extends Controller
         try {
             $cle = $request->input('cle');
             $page = $request->input('page', 1);
-            $produits = VProduitLibComplet::where('etat', 'En vente')
+            $produits = VProduitLibComplet::select('v_produit_lib_complet.*', DB::raw('(SELECT url FROM photo_produit WHERE photo_produit.id_produit = v_produit_lib_complet.id LIMIT 1) as photo_url'))
+                ->where('etat', 'En vente')
                 ->where('titre', 'like', '%' . $cle . '%')->paginate(10);
             return response()->json($produits);
         } catch (Exception $ex) {

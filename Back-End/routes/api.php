@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AcceuilApiController;
 use App\Http\Controllers\Api\AchatApiController;
 use App\Http\Controllers\Api\AvatarApiController;
 use App\Http\Controllers\Api\TransactionJetonApiController;
@@ -7,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CategorieApiController;
 use App\Http\Controllers\Api\ConditionProduitApiController;
+use App\Http\Controllers\Api\DetailProduitApiController;
 use App\Http\Controllers\Api\EquivalenceDeviseApiController;
 use App\Http\Controllers\Api\ModePaiementApiController;
 use App\Http\Controllers\Api\PaysApiController;
@@ -15,6 +17,8 @@ use App\Http\Controllers\Api\VenteApiController;
 use App\Http\Controllers\Api\ProduitApiController;
 use App\Http\Controllers\Api\UtilisateurFrontOfficeApiController;
 use App\Http\Controllers\Api\VilleApiController;
+use App\Http\Controllers\Api\ListeProduitApiController;
+
 use App\Http\Controllers\Api\VProduitLibCompletApiController;
 use App\Http\Controllers\Api\VVilleLibCompletApiController;
 use App\Http\Controllers\Authentification\AuthController;
@@ -50,6 +54,13 @@ Route::get('/mode-paiements', [ModePaiementApiController::class, 'index']);
 Route::get('/devises', [EquivalenceDeviseApiController::class, 'index']);
 Route::get('/avatars', [AvatarApiController::class, 'index']);
 Route::get('/utilisateurs/{id_utilisateur}', [UtilisateurFrontOfficeApiController::class, 'utilisateur']);
+
+Route::get('/acceuil', [AcceuilApiController::class, 'index']);
+Route::get('/detail-produit/{id}', [DetailProduitApiController::class, 'index']);
+
+Route::get('/list-produit-init', [ListeProduitApiController::class, 'index']);
+Route::get('/list-produit-filtre', [ListeProduitApiController::class, 'filtre']);
+
 
 
 

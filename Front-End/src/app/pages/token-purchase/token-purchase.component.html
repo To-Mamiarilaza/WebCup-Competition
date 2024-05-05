@@ -13,13 +13,16 @@
         <tbody>
           <tr>
             <td>
-              <select class="form-select">
+              <select (ngModel)="deviseSelected" class="form-select">
+                <option *ngFor="let item of equivalenceDevises" [value]="item.id" (click)="onDeviseSelect(item)">
+                  {{ item.nom }} - {{ item.valeur }} - {{ item.created_at }} - {{ item.updated_at | date }}
+                </option>
                 <option value="">Ariary</option>
                 <option value="">Euro</option>
                 <option value="">Dollar US</option>
               </select>
             </td>
-            <td>100</td>
+            <td *ngIf="deviseSelected">{{ deviseSelected.valeur }}</td>
           </tr>
         </tbody>
       </table>

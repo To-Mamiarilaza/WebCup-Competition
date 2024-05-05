@@ -1,0 +1,88 @@
+<section class="semi-banner">
+    <p class="mb-0">Mon compte</p>
+    <h3 class="mt-1">A propos de moi</h3>
+</section>
+
+<!-- Modal -->
+<div class="modal col-md-10 fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Choisissez votre avatar</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body ">
+                <form action="">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Chercher le nom de votre avatar">
+                    </div>
+
+                    <div class="avatar-list mt-4">
+                        <div class="row">
+                            <app-avatar class="col-md-3 px-2"></app-avatar>
+                            <app-avatar class="col-md-3 px-2"></app-avatar>
+                            <app-avatar class="col-md-3 px-2"></app-avatar>
+                            <app-avatar class="col-md-3 px-2"></app-avatar>
+                            <app-avatar class="col-md-3 px-2"></app-avatar>
+                            <app-avatar class="col-md-3 px-2"></app-avatar>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary">Enregistrer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="new-vente-form pb-4 p-1">
+    <div class="container">
+        <section class="py-3 px-5 mt-3">
+            <div class="col-md-8 mx-auto">
+                <div class="mt-4 avatar-section p-4">
+                    <img src="/assets/images/avatar/profile.png" alt="">
+                    <div class="mx-5">
+                        <h5 class="mb-0">Andry RAKOTO</h5>
+                        <p class="mt-1 mb-0 telephone">034 41 312 23</p>
+                        <p class="mt-1 mb-0 email">mamiarilaza.to&#64;gmail.com</p>
+                    </div>
+                    <div class="ms-5">
+                        <button class="config-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <i class="bi bi-gear"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mt-4 info p-4">
+                    <form action="">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Pseudo</label>
+                            <input type="text" class="form-control" placeholder="Alan">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Email</label>
+                            <input type="text" class="form-control" placeholder="alan@gmail.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Telephone</label>
+                            <input type="text" class="form-control" placeholder="034 14 516 34">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Password</label>
+                            <input type="password" class="form-control" placeholder="mot de passe">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Confirmer password</label>
+                            <input type="password" class="form-control" placeholder="mot de passe">
+                        </div>
+                        <div class="mb-3">
+                            <input type="submit" class="btn btn-primary px-5" value="Valider">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

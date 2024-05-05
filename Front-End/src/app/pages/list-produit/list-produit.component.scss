@@ -41,5 +41,13 @@
         }
     }
 
+    .text-green {
+        color: var(--special-color) !important;
+        &:hover {
+            border-bottom: solid 1px var(--special-color) !important;
+            color: var(--special-color) !important;
+        }
+    }
+
 
 }

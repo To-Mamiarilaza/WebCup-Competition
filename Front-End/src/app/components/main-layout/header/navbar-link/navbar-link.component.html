@@ -7,11 +7,11 @@
             25 Kc
         </span>
     </a>
-    <a href="" class="navbar-link-item">
+    <a [routerLink]="['/main/transaction']" class="navbar-link-item">
         <i class="bi bi-arrow-left-right"></i>
         <span class="link-notif">1</span>
     </a>
-    <a href="" class="navbar-link-item">
+    <a [routerLink]="['/main/historique-vente']" class="navbar-link-item">
         <i class="bi bi-shop"></i>
     </a>
     <a href="" class="navbar-link-item" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -19,7 +19,7 @@
     </a>
     <div class="dropdown">
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#"> <i class="bi bi-person-fill me-2"></i> Mon compte</a></li>
+            <li><a class="dropdown-item"[routerLink]="['/main/compte']"> <i class="bi bi-person-fill me-2"></i> Mon compte</a></li>
             <li><a class="dropdown-item" href="#"> <i class="bi bi-door-closed me-2"></i> Se déconnecter</a></li>
         </ul>
     </div>

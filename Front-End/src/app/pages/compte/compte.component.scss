@@ -1,0 +1,63 @@
+.semi-banner {
+    height: 140px;
+    background-color: var(--special-color);
+    color: white;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    p {
+        color: var(--bg-white-color);
+    }
+}
+
+.new-vente-form {
+    background-color: #f6f6f6;
+}
+
+.avatar-section {
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+
+
+    img {
+        border-radius: 10px;
+        width: 120px;
+        height: 120px;
+    }
+
+    .telephone {
+        color: var(--special-color) !important;
+    }
+
+    .email {
+        font-size: 14px;
+        color: var(--special-dark-color);
+    }
+
+    .config-button {
+        background-color: transparent;
+        border: none;
+        font-size: var(--fs-icon);
+        transition: .2s;
+
+        &:hover {
+            color: var(--special-color);
+        }
+    }
+
+}
+
+.info {
+    background-color: white;
+    border-radius: 10px;
+}
+
+.avatar-list {
+    
+
+}

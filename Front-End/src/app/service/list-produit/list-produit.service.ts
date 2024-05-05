@@ -1,14 +1,12 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, catchError, tap, throwError } from "rxjs";
 import { env } from "../../environments/env";
-import { Product } from "../../model/Product";
-import { Category } from "../../model/Category";
+import { BehaviorSubject, catchError, tap, throwError } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
-export class HomeService {
+export class ListProduitService {
   private loadingSubject = new BehaviorSubject<boolean>(false);
   public loading$ = this.loadingSubject.asObservable();
   private errorSubject = new BehaviorSubject<string | null>(null);
@@ -16,14 +14,11 @@ export class HomeService {
 
   constructor(public http: HttpClient) {}
 
-  getData() {
+  getAll() {
+    let resp: any;
     this.loadingSubject.next(true);
-    let data: { produits: Product[]; categories: Category[] } = {
-      produits: [],
-      categories: [],
-    };
     this.http
-      .get(`${env.baseUrl}/api/acceuil`)
+      .get(`${env.baseUrl}/api/list-produit-init`)
       .pipe(
         tap(() => this.loadingSubject.next(false)),
         catchError((err) => {
@@ -35,8 +30,29 @@ export class HomeService {
         })
       )
       .subscribe((response: any) => {
-        data = response;
+        resp = response;
       });
-    return data;
+    return resp;
+  }
+
+  page(url: string) {
+    let resp: any[] = [];
+    this.loadingSubject.next(true);
+    this.http
+      .get(url)
+      .pipe(
+        tap(() => this.loadingSubject.next(false)),
+        catchError((err) => {
+          this.loadingSubject.next(false);
+          this.errorSubject.next(err.error.message);
+          return throwError(() => {
+            return err;
+          });
+        })
+      )
+      .subscribe((response: any) => {
+        resp = response;
+      });
+    return resp;
   }
 }

@@ -8,20 +8,14 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="row mt-4">
-                    <app-produit class="col-6 col-sm-6 col-md-4 mb-3"></app-produit>
-                    <app-produit class="col-6 col-sm-6 col-md-4 mb-3"></app-produit>
-                    <app-produit class="col-6 col-sm-6 col-md-4 mb-3"></app-produit>
-                    <app-produit class="col-6 col-sm-6 col-md-4 mb-3"></app-produit>
-                    <app-produit class="col-6 col-sm-6 col-md-4 mb-3"></app-produit>
-                    <app-produit class="col-6 col-sm-6 col-md-4 mb-3"></app-produit>
+                    <app-produit *ngFor="let item of produits" categorie="{{item.categorie}}" imagePath="{{item.photo_url}}" [price]="item.prix" utilisateur="{{item.utilisateur}}" class="col-6 col-sm-6 col-md-4 mb-3"></app-produit>
 
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                <li class="page-item"
+                                    (click)="getPreviousPage()">Previous</li>
+                                <li class="page-item"
+                                    (click)="getNextPage()">Next</li>
                         </ul>
                     </nav>
                 </div>
@@ -111,8 +105,9 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="mt-4">
-                            <button>Annuler le filtre</button>
+                        <div class="mt-4 d-flex">
+                            <button class="px-3">Annuler</button>
+                            <button class="ms-5 px-3 text-green">Valider</button>
                         </div>
                     </form>
                 </div>

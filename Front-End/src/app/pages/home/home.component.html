@@ -26,7 +26,7 @@
                     </button>
                 </div>
 
-                <app-produit *ngFor="let product of products" imagePath="{{product.photo_url}}" categorie="{{product.categorie}}" [price]="product.prix" class="col-6 col-sm-6 col-md-3 mb-3"></app-produit>
+                <app-produit *ngFor="let product of products" imagePath="{{product.photo_url}}" titre="{{product.titre}}" [price]="product.prix" class="col-6 col-sm-6 col-md-3 mb-3"></app-produit>
             </div>
         </div>
     </div>

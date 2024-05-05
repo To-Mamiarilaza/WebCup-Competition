@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, catchError, tap, throwError } from "rxjs";
+import { BehaviorSubject, catchError, Observable, tap, throwError } from "rxjs";
 import { env } from "../../environments/env";
 import { Product } from "../../model/Product";
 import { Category } from "../../model/Category";
@@ -16,27 +16,21 @@ export class HomeService {
 
   constructor(public http: HttpClient) {}
 
-  getData() {
+  getData(): Observable<any> {
     this.loadingSubject.next(true);
     let data: { produits: Product[]; categories: Category[] } = {
       produits: [],
       categories: [],
     };
-    this.http
-      .get(`${env.baseUrl}/api/acceuil`)
-      .pipe(
-        tap(() => this.loadingSubject.next(false)),
-        catchError((err) => {
-          this.loadingSubject.next(false);
-          this.errorSubject.next(err.error.message);
-          return throwError(() => {
-            return err;
-          });
-        })
-      )
-      .subscribe((response: any) => {
-        data = response;
-      });
-    return data;
+    return this.http.get(`${env.baseUrl}/api/acceuil`).pipe(
+      tap(() => this.loadingSubject.next(false)),
+      catchError((err) => {
+        this.loadingSubject.next(false);
+        this.errorSubject.next(err.error.message);
+        return throwError(() => {
+          return err;
+        });
+      })
+    );
   }
 }

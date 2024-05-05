@@ -18,11 +18,32 @@
     height: fit-content;
 }
 
-tr td p {
+tr td button {
     margin: 0;
     padding: 5px 15px;
     font-size: small;
+    width: 100%;
     text-align: center;
+    background-color: var(--special-color);
+    border: none;
+    color: black;
+    transition: .3s;
+
+    &:hover {
+      color: white;
+    }
+}
+
+.attente {
+  background-color: var(--tertial-color) !important;
+}
+
+.livre {
+  background-color: var(--special-color) !important;
+}
+
+.effectue {
+  background-color: #4fb32759 !important;
 }
 
 .state-default {

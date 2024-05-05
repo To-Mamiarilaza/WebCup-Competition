@@ -7,8 +7,8 @@ import { CookieService } from "ngx-cookie-service";
 export class StorageService {
   constructor(private cookieService: CookieService) {}
 
-  setItem(key: string, value: string): void {
-    this.cookieService.set(key, value);
+  setItem(key: string, value: string, path: string = '/'): void {
+    this.cookieService.set(key, value, undefined, path);
   }
 
   getItem(key: string): string | null {

@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { EquivalenceDevise } from '../../models/EquivalenceDevise';
 import { CommonModule } from '@angular/common'; // Import du CommonModule
 import { env } from '../../environments/env';
+import { StorageService } from '../../service/storage/storage.service';
 
 @Component({
   selector: 'app-token-purchase',
@@ -18,23 +19,26 @@ export class TokenPurchaseComponent  implements OnInit{
   nb_jeton: number = 0;
   user_jeton: number | null = null;
 
-  constructor(private http: HttpClient) {
-    this.headers = new HttpHeaders({
-      'ApiToken': '2FmaZ6hC8zmDnmnzGvqkHccIE9peTHD0rHNiEpWpdIohpzKcTiAmC80CN4MI'
-    });
+  constructor(private http: HttpClient, private storageService: StorageService) {
+    this.headers = new HttpHeaders({});
   }
-
+  
   ngOnInit(): void {
-    // this.http.get<EquivalenceDevise[]>(env.baseUrl + "/equivalence_devises", { headers: this.headers}
-    this.http.get<EquivalenceDevise[]>("http://127.0.0.1:8000/api/equivalence_devises", { headers: this.headers})
+    this.updateHeaders();
+    // this.http.get<EquivalenceDevise[]>("http://127.0.0.1:8000/api/equivalence_devises", { headers: this.headers})
+    this.http.get<EquivalenceDevise[]>(env.baseUrl + "/equivalence_devises", { headers: this.headers})
     .subscribe(data => {
       this.equivalenceDevises = data
     })
     this.updateUserJeton();
   }
+  updateHeaders(): void {
+    const accessToken = this.storageService.getItem("access_token");
+    if (accessToken)  this.headers = new HttpHeaders({ 'ApiToken': accessToken });
+  }
   updateUserJeton(): void {
-    // this.http.get<EquivalenceDevise[]>(env.baseUrl + "/jeton-utilisateur", { headers: this.headers}
-    this.http.get<any>("http://127.0.0.1:8000/api/jeton-utilisateur", { headers: this.headers})
+    // this.http.get<any>("http://127.0.0.1:8000/api/jeton-utilisateur", { headers: this.headers})
+    this.http.get<any>(env.baseUrl + "/jeton-utilisateur", { headers: this.headers})
     .subscribe(data => {
       this.user_jeton = data['reste'];
     })
@@ -51,8 +55,8 @@ export class TokenPurchaseComponent  implements OnInit{
       "valeur_devise": this.deviseSelected?.valeur,
       "montant": this.nb_jeton
      };
-    // this.http.get<EquivalenceDevise[]>(env.baseUrl + "/vente-jetons", body, { headers: this.headers })
-    this.http.post<any>("http://127.0.0.1:8000/api/vente-jetons", body, { headers: this.headers })
+    //  this.http.post<any>("http://127.0.0.1:8000/api/vente-jetons", body, { headers: this.headers })
+    this.http.post<any>(env.baseUrl + "/vente-jetons", body, { headers: this.headers })
     .subscribe({
       next: (data) => {
         // Gérer la réponse réussie ici

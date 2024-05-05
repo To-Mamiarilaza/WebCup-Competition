@@ -12,6 +12,8 @@ import { ImageUploadComponent } from "./components/image-upload/image-upload.com
 import { authGuard } from "./guard/auth.guard";
 import { ListProduitComponent } from "./pages/list-produit/list-produit.component";
 import { VenteHistoriqueComponent } from "./pages/vente-historique/vente-historique.component";
+import { NewVenteComponent } from "./pages/new-vente/new-vente.component";
+import { PhotoInsertionComponent } from "./pages/photo-insertion/photo-insertion.component";
 
 export const routes: Routes = [
   {
@@ -48,6 +50,16 @@ export const routes: Routes = [
         path: "historique-vente",
         component: VenteHistoriqueComponent,
         title: "Historique de vente",
+      },
+      {
+        path: "new-vente",
+        component: NewVenteComponent,
+        title: "Nouvelle vente",
+      },
+      {
+        path: "photo-insertion",
+        component: PhotoInsertionComponent,
+        title: "Nouvelle vente",
       },
     ],
   },

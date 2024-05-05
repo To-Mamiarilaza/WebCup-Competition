@@ -61,7 +61,24 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+
+          <tr *ngFor="let transaction of userTansactions">
+            <td>{{ transaction.created_at }}</td>
+            <td>{{ transaction.nom }}</td>
+            <td>{{ transaction.titre_produit }}</td>
+            <td>{{ transaction.prix }}</td>
+            <td>{{ transaction.name }}</td>
+            <td>
+              <button [ngClass]="{
+                'state-default attente': transaction.id_etat === 2,
+                'state-default livre': transaction.id_etat === 1,
+                'state-success effectue': transaction.id_etat === 0,
+                'state-success fin': transaction.id_etat >= 3,
+              }">{{ getLabelForIdEtat(transaction.id_etat) }}</button>
+            </td>            
+          </tr>
+
+          <!-- <tr>
             <td>10-11-2024</td>
             <td>Achat produit</td>
             <td>Lunette de soleil</td>

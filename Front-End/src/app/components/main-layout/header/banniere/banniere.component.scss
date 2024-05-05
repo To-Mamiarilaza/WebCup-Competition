@@ -1,5 +1,12 @@
 .carousel {
 
+    #ecoindex-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 20;
+    }
+
     .my-carousel-indicators {
         position: absolute;
         z-index: 10;
